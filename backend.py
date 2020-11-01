@@ -5,14 +5,12 @@ Refernces:
 https://flask.palletsprojects.com/en/1.1.x/quickstart/
 '''
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from interface import *
-
-
-
-
 app = Flask(__name__)
 
+
+# Front page
 @app.route('/', methods=['GET'])
 def static_web_page():
     ''' 
@@ -20,22 +18,24 @@ def static_web_page():
 
     TODO: Implement this.
     '''
-    return 'Hello, World!'
+    return send_from_directory('frontend/', 'index.html')
 
 
-@app.route('/sensor_data/<str:sensor_name>', methods=['GET'])
+
+@app.route('/sensor_data/<sensor_name>', methods=['GET'])
 def get_sensor_data(sensor_name):
     '''
     Function should call the pybinding function to obtain sensor data, jsonify it and return it.
 
     TODO: Implement this.
     '''
-    if sensor_name == "IMU":
-        data = {}
-    elif sensor_name == "camera":
-        data = {}
-    data = pybinding_get_sensor_data()
-    return jsonify(data)
+    # if sensor_name == "IMU":
+    #     data = get_IMU()
+    # elif sensor_name == "temperature":
+    #     data = {}
+    # data = pybinding_get_sensor_data()
+    # return jsonify(data)
+    pass
 
 
 @app.route('/command', methods=['POST'])
@@ -45,9 +45,10 @@ def command(COMMAND):
 
     TODO: Implement this.
     '''
-    params = request.form # request.form should be of dict format
-    pybinding_motion_control(params)
-    return
+    # params = request.form # request.form should be of dict format
+    # pybinding_motion_control(params)
+    # return
+    pass
 
 
 
