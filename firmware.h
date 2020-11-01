@@ -18,7 +18,7 @@ extern "C"
 	float get_acceleration_y();
 	// All functions above are local-frame based raw data
 
-	float get_temperature_data();
+	float get_temperature();
 
 
 	//More coming soon (like cyberpunk 2077)
