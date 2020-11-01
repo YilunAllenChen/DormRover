@@ -49,13 +49,17 @@ def static_web_page():
     return 'Hello, World!'
 
 
-@app.route('/sensor_data', methods=['GET'])
-def get_sensor_data():
+@app.route('/sensor_data/<str:sensor_name>', methods=['GET'])
+def get_sensor_data(sensor_name):
     '''
     Function should call the pybinding function to obtain sensor data, jsonify it and return it.
 
     TODO: Implement this.
     '''
+    if sensor_name == "IMU":
+        data = {}
+    elif sensor_name == "camera":
+        
     data = pybinding_get_sensor_data()
     return jsonify(data)
 
