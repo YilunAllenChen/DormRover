@@ -10,9 +10,14 @@ import pathlib
 # Import the shared library
 try:
     libname = pathlib.Path().absolute() / "firmware.so"
-    firmware = ctypes.CDLL(libname)
 except:
     print("ERROR: firmware.so not supplied. \nExiting...")
+    exit()
+
+try:
+    firmware = ctypes.CDLL(libname)
+except Exception as e:
+    print("ERROR: Can't load the firmware dll: {}\nExiting...")
     exit()
 
 # Function return and parameter types declaration
@@ -64,11 +69,11 @@ def set_speed(speed: float) -> None:
     firmware.set_speed(ctypes.c_float(speed))
 
 
-def go_forward() -> None:
+def go_straight() -> None:
     '''
     Function uses pre-built c++ libraries and let both motors go forward.
     '''
-    firmware.go_forward()
+    firmware.go_straight()
 
 def go_backward() -> None:
     '''
@@ -94,4 +99,24 @@ def stop() -> None:
     '''
     firmware.stop()
 
+def initialize_pins():
+    firmware.initialize_pins()
 
+# Run this file to test functionality.
+
+if __name__ == '__main__':
+    from time import sleep
+    initialize_pins()
+    set_speed(100)
+
+    go_straight()
+    print("going straight")
+    sleep(1)
+    print("Done. stopping...")
+    stop()
+    sleep(1)
+    turn_left()
+    print("turning left...")
+    sleep(1)
+    stop()
+    print("Done. stopping...")

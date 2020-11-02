@@ -51,8 +51,5 @@ def command(COMMAND):
     pass
 
 
-
-
-
 if __name__ == "__main__":
     app.run()
