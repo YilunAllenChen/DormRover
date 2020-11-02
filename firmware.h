@@ -1,6 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <pigpio.h> // include GPIO library
+#include <signal.h> // needed to clean up CTL C abort
+#include <sys/types.h>
+#include <unistd.h>
 extern "C"
 {
-	void set_speed(int speed);
+	void initialize_pins();
+	void set_speed(int);
 	// Set speed for both motors
 
 	void go_straight();
@@ -12,6 +19,8 @@ extern "C"
 	void stop();
 	// hard-stop all motors
 
+	void set_left(int);
+	void set_right(int);
 	float get_velocity_x();
 	float get_velocity_y();
 	float get_acceleration_x();

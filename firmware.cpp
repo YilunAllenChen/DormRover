@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pigpio.h> // include GPIO library
-#include <signal.h> // needed to clean up CTL C abort
-#include <sys/types.h>
-#include <unistd.h>
+#include "firmware.h"
+#include "LSM9DS1.h"
 #define LED 18
 #define AmotorInA 24
 #define AmotorInB 23
@@ -30,6 +26,35 @@ extern "C"
 		gpioSetMode(AmotorPWM, PI_OUTPUT);
 	}
 
+	void set_speed(int new_speed)
+	{
+		speed = new_speed;
+	}
+
+	void go_straight()
+	{
+		set_left(speed);
+		set_right(speed);
+	}
+
+	void go_backward()
+	{
+		set_left(-speed);
+		set_right(-speed);
+	}
+	
+	void turn_left()
+	{
+		set_left(speed);
+		set_right(-speed);
+	}
+	
+	void turn_right()
+	{
+		set_left(-speed);
+		set_right(+speed);
+	}
+
 	void stop()
 	{
 		gpioWrite(AmotorInA, PI_ON);
@@ -52,34 +77,30 @@ extern "C"
 		speed = speedIn > 0 ? speedIn : -speedIn;
 		gpioPWM(BmotorPWM, speedIn);
 	}
-
-	void set_speed(int new_speed)
+	float get_velocity_x()
 	{
-		speed = new_speed;
+		return 0;
+	}
+	float get_velocity_y()
+	{
+		return 0;
+	}
+	float get_acceleration_x()
+	{
+		return 0;
+	}
+	float get_acceleration_y()
+	{
+		return 0;
 	}
 
-	void go_straight()
+	float get_temperature()
 	{
-		set_left(speed);
-		set_right(speed);
+		return 0;
 	}
 
-	void go_backward()
-	{
-		set_left(-speed);
-		set_right(-speed);
-	}
-	void turn_left()
-	{
-		set_left(speed);
-		set_right(-speed);
-	}
 
-	void turn_right()
-	{
-		set_left(-speed);
-		set_right(+speed);
-	}
+	
 }
 int main()
 {
