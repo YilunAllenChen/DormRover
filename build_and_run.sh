@@ -1,7 +1,10 @@
 # NOTE: Run this with sudo!
 
 # Build the firmware
-gcc -shared -fPIC -lpigpio -lrt firmware.cpp -o firmware.so
+# compile to run (no share flag)
+# g++ -lpigpio -lrt -lwiringPi firmware.cpp LSM9DS1.cpp -o firmware.so
+g++ -shared -fPIC -lpigpio -lrt -lwiringPi firmware.cpp LSM9DS1.cpp -o firmware.so
+# gcc -shared -fPIC -lpigpio -lrt firmware.cpp -o firmware.so
 pip3 install -r requirements./txt
 
 # # Full stack environment
