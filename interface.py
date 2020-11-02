@@ -17,17 +17,19 @@ except:
 try:
     firmware = ctypes.CDLL(libname)
 except Exception as e:
-    print("ERROR: Can't load the firmware dll: {}\nExiting...")
+    print("ERROR: Can't load the firmware dll: {}\nExiting...".format(e))
     exit()
 
 # Function return and parameter types declaration
 try:
     firmware.set_speed.argtypes = [ctypes.c_int]
+    '''
     firmware.get_velocity_x.restype = ctypes.c_float
     firmware.get_velocity_y.restype = ctypes.c_float
     firmware.get_acceleration_x.restype = ctypes.c_float
     firmware.get_acceleration_y.restype = ctypes.c_float
     firmware.get_temperature.restype = ctypes.c_float
+    '''
 except Exception as e:
     print("ERROR: Initialization failed for one of the functions: {}\n Exiting...".format(e))
     exit()
@@ -60,13 +62,13 @@ def get_temperature() -> float:
     '''
     return firmware.get_temperature()
 
-def set_speed(speed: float) -> None:
+def set_speed(speed: int) -> None:
     '''
     Function uses pre-built c++ libraries and set the speed of both motors to parameter speed.
 
     :param speed: The target speed, from 0 to 100.
     '''
-    firmware.set_speed(ctypes.c_float(speed))
+    firmware.set_speed(speed)
 
 
 def go_straight() -> None:
