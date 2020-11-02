@@ -4,7 +4,6 @@
 #include <signal.h> // needed to clean up CTL C abort
 #include <sys/types.h>
 #include <unistd.h>
-#include "firmware.h"
 #define LED 18
 #define AmotorInA 24
 #define AmotorInB 23
@@ -18,6 +17,9 @@ extern "C"
 	int speed = 0;
 	void initialize_pins()
 	{
+		if (gpioInitialise() < 0){
+			return;
+		};
 		gpioSetPWMrange(BmotorPWM, 100);
 		gpioSetPWMrange(AmotorPWM, 100);
 		gpioSetMode(BmotorInA, PI_OUTPUT);
@@ -34,7 +36,6 @@ extern "C"
 		gpioWrite(AmotorInB, PI_ON);
 		gpioWrite(BmotorInA, PI_ON);
 		gpioWrite(BmotorInB, PI_ON);
-		speed = 0;
 	}
 	void set_left(int speedIn)
 	{
@@ -52,16 +53,16 @@ extern "C"
 		gpioPWM(BmotorPWM, speedIn);
 	}
 
-	void set_speed(int speed)
+	void set_speed(int new_speed)
 	{
-		speed = speed;
+		speed = new_speed;
 	}
 
 	void go_straight()
 	{
 		set_left(speed);
 		set_right(speed);
-	};
+	}
 
 	void go_backward()
 	{
@@ -82,6 +83,12 @@ extern "C"
 }
 int main()
 {
+	initialize_pins();
+	set_speed(100);
+	printf("Speed is %d\n", speed);
+	go_straight();
+	sleep(1);
+	stop();
 	return 0;
 }
 /*void initialze_pins(){
@@ -159,3 +166,4 @@ int main(int argc, char *argv[])
    return 0;
 }
 */
+
