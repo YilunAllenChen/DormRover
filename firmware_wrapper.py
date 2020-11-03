@@ -66,16 +66,16 @@ def get_IMU() -> dict:
         }
     '''
     res = None
-    if IMU_lib.LSM9DS1_accelAvailable(imu) == 0:
-        IMU_lib.LSM9DS1_readAccel(imu)
-        ax = IMU_lib.LSM9DS1_getAccelX(imu)
-        ay = IMU_lib.LSM9DS1_getAccelY(imu)
-        az = IMU_lib.LSM9DS1_getAccelZ(imu)
-        res = {
-            'ax': ax,
-            'ay': ay,
-            'az': az
-        }
+    # if IMU_lib.LSM9DS1_accelAvailable(imu) == 0:
+    IMU_lib.LSM9DS1_readAccel(imu)
+    ax = IMU_lib.LSM9DS1_getAccelX(imu)
+    ay = IMU_lib.LSM9DS1_getAccelY(imu)
+    az = IMU_lib.LSM9DS1_getAccelZ(imu)
+    res = {
+        'ax': ax,
+        'ay': ay,
+        'az': az
+    }
     return res
 
 def get_temperature() -> float:
