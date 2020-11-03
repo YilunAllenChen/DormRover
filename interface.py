@@ -104,8 +104,10 @@ def stop() -> None:
 def initialize_pins():
     firmware.initialize_pins()
 
-# Run this file to test functionality.
 
+
+
+# Firmware testing script. Run this file to test functionality.
 if __name__ == '__main__':
     from time import sleep
     initialize_pins()
