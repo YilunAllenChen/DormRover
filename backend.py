@@ -6,7 +6,7 @@ https://flask.palletsprojects.com/en/1.1.x/quickstart/
 '''
 
 from flask import Flask, jsonify, request, send_from_directory
-from interface import *
+from firmware_wrapper import *
 app = Flask(__name__)
 
 

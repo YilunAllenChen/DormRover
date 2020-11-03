@@ -1,38 +1,52 @@
 '''
-Backend of the DormRover project. Powered by Flask and python/C++ binding utilities
-
-Refernces:
+Backend of the DormRover project. Interaction with C library powered by ctypes
 '''
 
 import ctypes
 import pathlib
 
-# Import the shared library
-try:
-    libname = pathlib.Path().absolute() / "firmware.so"
-except:
-    print("ERROR: firmware.so not supplied. \nExiting...")
-    exit()
 
-try:
-    firmware = ctypes.CDLL(libname)
-except Exception as e:
-    print("ERROR: Can't load the firmware dll: {}\nExiting...".format(e))
-    exit()
+# Load all libraries
+def load_lib(libname: str):
+    '''
+    Helper function to load a shared C library
+    '''
+    try:
+        libname = str(pathlib.Path().absolute() + libname)
+    except:
+        print(f"ERROR: {libname} not supplied. \nExiting...")
+        exit()
+    try:
+        return ctypes.CDLL(libname)
+    except Exception as e:
+        print(f"ERROR: Can't load the {libname} dll: {e}\nExiting...")
+        exit()
+
+motion_control = load_lib('motion_control.so')
+IMU = load_lib('IMU.so')
+
+
 
 # Function return and parameter types declaration
 try:
-    firmware.set_speed.argtypes = [ctypes.c_int]
+    motion_control.set_speed.argtypes = [ctypes.c_int]
     '''
-    firmware.get_velocity_x.restype = ctypes.c_float
-    firmware.get_velocity_y.restype = ctypes.c_float
-    firmware.get_acceleration_x.restype = ctypes.c_float
-    firmware.get_acceleration_y.restype = ctypes.c_float
-    firmware.get_temperature.restype = ctypes.c_float
+    IMU.get_velocity_x.restype = ctypes.c_float
+    IMU.get_velocity_y.restype = ctypes.c_float
+    IMU.get_acceleration_x.restype = ctypes.c_float
+    IMU.get_acceleration_y.restype = ctypes.c_float
+    IMU.get_temperature.restype = ctypes.c_float
     '''
 except Exception as e:
-    print("ERROR: Initialization failed for one of the functions: {}\n Exiting...".format(e))
+    print(f"ERROR: Library function return and argument types declaration failed for one of the functions: {e}\n Exiting...")
     exit()
+
+
+# System initialization
+motion_control.initialize_pins()
+## TODO: IMU Initialization here
+
+
 
 
 def get_IMU() -> dict:
@@ -48,10 +62,10 @@ def get_IMU() -> dict:
         }
     '''
     res = {}
-    res['velocity_x'] = firmware.get_velocity_x()
-    res['velocity_y'] = firmware.get_velocity_y()
-    res['acceleration_x'] = firmware.get_acceleration_x()
-    res['acceleration_y'] = firmware.get_acceleration_y()
+    res['velocity_x'] = IMU.get_velocity_x()
+    res['velocity_y'] = IMU.get_velocity_y()
+    res['acceleration_x'] = IMU.get_acceleration_x()
+    res['acceleration_y'] = IMU.get_acceleration_y()
     return res
 
 def get_temperature() -> float:
@@ -60,7 +74,7 @@ def get_temperature() -> float:
 
     :return: data obtained by the temperature sensor
     '''
-    return firmware.get_temperature()
+    return motion_control.get_temperature()
 
 def set_speed(speed: int) -> None:
     '''
@@ -68,47 +82,42 @@ def set_speed(speed: int) -> None:
 
     :param speed: The target speed, from 0 to 100.
     '''
-    firmware.set_speed(speed)
-
+    motion_control.set_speed(speed)
 
 def go_straight() -> None:
     '''
     Function uses pre-built c++ libraries and let both motors go forward.
     '''
-    firmware.go_straight()
+    motion_control.go_straight()
 
 def go_backward() -> None:
     '''
     Function uses pre-built c++ libraries and let both motors go backward.
     '''
-    firmware.go_backward()
+    motion_control.go_backward()
 
 def turn_left() -> None:
     '''
     Function uses pre-built c++ libraries and let the robot turn left.
     '''
-    firmware.turn_left()
+    motion_control.turn_left()
 
 def turn_right() -> None:
     '''
     Function uses pre-built c++ libraries and let the robot turn right.
     '''
-    firmware.turn_right()
+    motion_control.turn_right()
 
 def stop() -> None:
     '''
     Function uses pre-built c++ libraries and let the robot go to a hard stop.
     '''
-    firmware.stop()
+    motion_control.stop()
 
-def initialize_pins():
-    firmware.initialize_pins()
 
-# Run this file to test functionality.
-
+# motion_control testing script. Run this file to test functionality.
 if __name__ == '__main__':
     from time import sleep
-    initialize_pins()
     set_speed(100)
 
     go_straight()
