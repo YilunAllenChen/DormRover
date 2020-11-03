@@ -2,7 +2,7 @@
 #include "LSM9DS1.h"
 
 extern int speed;
-git st
+
 int main(int argc, char *argv[])
 {
 	initialize_pins();
