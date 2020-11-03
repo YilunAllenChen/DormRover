@@ -4,9 +4,7 @@
 #include <signal.h> // needed to clean up CTL C abort
 #include <sys/types.h>
 #include <unistd.h>
-#include <errno.h>
-#include "LSM9DS1_Types.h"
-#include "LSM9DS1.h"
+
 extern "C"
 {
 	void initialize_pins();
