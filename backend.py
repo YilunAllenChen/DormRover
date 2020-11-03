@@ -6,7 +6,7 @@ https://flask.palletsprojects.com/en/1.1.x/quickstart/
 '''
 
 from flask import Flask, jsonify, request, send_from_directory
-from firmware_wrapper import *
+# from firmware_wrapper import *
 app = Flask(__name__)
 
 
@@ -18,7 +18,7 @@ def static_web_page():
 
     TODO: Implement this.
     '''
-    return send_from_directory('frontend/', 'index.html')
+    return send_from_directory('Frontend/', 'index.html')
 
 
 
@@ -48,6 +48,8 @@ def command(COMMAND):
     # params = request.form # request.form should be of dict format
     # pybinding_motion_control(params)
     # return
+
+    print(request.json)
     pass
 
 
