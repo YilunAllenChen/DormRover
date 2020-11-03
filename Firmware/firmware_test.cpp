@@ -2,7 +2,7 @@
 #include "LSM9DS1.h"
 
 extern int speed;
-LSM9DS1 IMU(IMU_MODE_I2C, 0x6B, 0x1E);
+git st
 int main(int argc, char *argv[])
 {
 	initialize_pins();
