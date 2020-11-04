@@ -5,7 +5,6 @@ Backend of the DormRover project. Interaction with C library powered by ctypes
 from ctypes import *
 import ctypes
 import pathlib
-from picamera import PiCamera
 
 # Load all libraries
 def load_lib(libname: str):
@@ -171,15 +170,6 @@ def stop() -> None:
     Function uses pre-built c++ libraries and let the robot go to a hard stop.
     '''
     motion_control_lib.stop()
-
-camera = PiCamera()
-def vid_gen():
-    """Video streaming generator function."""
-    while True:
-        camera.capture('t.jpg')
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
-
 
 
 # motion_control_lib testing script. Run this file to test functionality.
