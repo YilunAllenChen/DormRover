@@ -1,12 +1,9 @@
 '''
 Backend of the DormRover project. Powered by Flask and python/C++ binding utilities
-
-Refernces:
-https://flask.palletsprojects.com/en/1.1.x/quickstart/
 '''
 
 from flask import Flask, jsonify, request, send_from_directory
-from firmware_wrapper import *
+# from firmware_wrapper import *
 from time import sleep
 app = Flask(__name__)
 
@@ -16,8 +13,6 @@ app = Flask(__name__)
 def static_web_page():
     ''' 
     Serves the static web page
-
-    TODO: Implement this.
     '''
     return send_from_directory('Frontend/', 'index.html')
 
@@ -69,4 +64,4 @@ def command():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')
