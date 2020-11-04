@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
         printf("        X axis    Y axis    Z axis\n\r");
         printf("accel: %9f %9f %9f in Gs\n\r", IMU.calcAccel(IMU.ax), IMU.calcAccel(IMU.ay), IMU.calcAccel(IMU.az));
 		printf("accel: %9f in Gs\n\r", a);
-        
         sleep(1.0);
 	}
 	exit(EXIT_SUCCESS);
