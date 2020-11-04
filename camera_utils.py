@@ -1,19 +1,63 @@
-# Web streaming example
-# Source code from the official PiCamera package
-# http://picamera.readthedocs.io/en/latest/recipes2.html#web-streaming
+'''
+Reference: https://github.com/Mjrovai/Video-Streaming-with-Flask/blob/master/camWebServer/camera_pi.py
+'''
 
+
+import time
 import io
-# import picamera
-# camera = picamera.PiCamera()
-# def vid_gen():
-#     while True:
-#         cam_stream = io.BytesIO()
-#         frame = cam.capture(cam_stream, 'jpeg')
-#         yield (b'--frame\r\n'
-#                b'Content-Type: image/jpeg\r\n\r\n' + cam_stream.getvalue() + b'\r\n')
+import threading
+import picamera
 
 
-from camera_pi import Camera
+class Camera(object):
+    thread = None  # background thread that reads frames from camera
+    frame = None  # current frame is stored here by background thread
+    last_access = 0  # time of last client access to the camera
+
+    def initialize(self):
+        if Camera.thread is None:
+            # start background frame thread
+            Camera.thread = threading.Thread(target=self._thread)
+            Camera.thread.start()
+
+            # wait until frames start to be available
+            while self.frame is None:
+                time.sleep(0)
+
+    def get_frame(self):
+        Camera.last_access = time.time()
+        self.initialize()
+        return self.frame
+
+    @classmethod
+    def _thread(cls):
+        with picamera.PiCamera() as camera:
+            # camera setup
+            camera.resolution = (320, 240)
+            camera.hflip = True
+            camera.vflip = True
+
+            # let camera warm up
+            camera.start_preview()
+            time.sleep(2)
+
+            stream = io.BytesIO()
+            for foo in camera.capture_continuous(stream, 'jpeg',
+                                                 use_video_port=True):
+                # store frame
+                stream.seek(0)
+                cls.frame = stream.read()
+
+                # reset stream for next frame
+                stream.seek(0)
+                stream.truncate()
+
+                # if there hasn't been any clients asking for frames in
+                # the last 10 seconds stop the thread
+                if time.time() - cls.last_access > 10:
+                    break
+        cls.thread = None
+
 
 def vid_gen():
     camera = Camera()
