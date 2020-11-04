@@ -80,7 +80,7 @@ try:
     IMU.get_temperature.restype = ctypes.c_float
     '''
 except Exception as e:
-    print(f"ERROR: Library function return and argument types declaration failed for one of the functions: {e}\n Exiting...")
+    print("ERROR: Library function return and argument types declaration failed for one of the functions: {}\n Exiting...".format(e))
     exit()
 
 
