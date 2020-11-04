@@ -95,6 +95,7 @@ except Exception as e:
 
 # System initialization
 motion_control_lib.initialize_pins()
+motion_control_lib.set_speed(100)
 imu = IMU_lib.LSM9DS1_create()
 IMU_lib.LSM9DS1_begin(imu)
 if IMU_lib.LSM9DS1_begin(imu) == 0:
