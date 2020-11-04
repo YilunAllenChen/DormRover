@@ -12,7 +12,7 @@ def load_lib(libname: str):
     Helper function to load a shared C library
     '''
     try:
-        libname = str(pathlib.Path().absolute() + libname)
+        libname = str(pathlib.Path().absolute() + "Firmware/" + libname)
     except:
         print(f"ERROR: {libname} not supplied. \nExiting...")
         exit()

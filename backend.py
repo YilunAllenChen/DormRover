@@ -6,7 +6,8 @@ https://flask.palletsprojects.com/en/1.1.x/quickstart/
 '''
 
 from flask import Flask, jsonify, request, send_from_directory
-# from firmware_wrapper import *
+from firmware_wrapper import *
+from time import sleep
 app = Flask(__name__)
 
 
@@ -39,7 +40,7 @@ def get_sensor_data(sensor_name):
 
 
 @app.route('/command', methods=['POST'])
-def command(COMMAND):
+def command():
     '''
     Function should call the pybinding function to execute motor commands.
 
@@ -48,9 +49,23 @@ def command(COMMAND):
     # params = request.form # request.form should be of dict format
     # pybinding_motion_control(params)
     # return
+    print('request data', request.json)
 
-    print(request.json)
-    pass
+    key = request.json['key']
+    if key == 'w':
+        go_straight()
+        sleep(1)
+    elif key == 's':
+        go_backward()
+        sleep(1)
+    elif key == 'a':
+        turn_left()
+        sleep(1)
+    elif key == 'd':
+        turn_right()
+        sleep(1)
+    stop()
+    
 
 
 if __name__ == "__main__":

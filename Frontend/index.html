@@ -47,14 +47,36 @@
 <p><strong>Tip:</strong> Use the transition-duration property to determine the speed of the "hover" effect:</p>
 
 
-<form action="" method="post">
-    <button class="button button1" name="foo" value="upvote">Upvote</button>
-</form>
 
-<form action="" method="post">
-    <button class="button button1" name="foo" value="upvote">Upvote</button>
-</form>
-
+<button class='button button1' id='forward' >W</button>
+<button class='button button1' id='backward' >S</button>
+<button class='button button1' id='left' >A</button>
+<button class='button button1' id='right' >D</button>
 
 </body>
 </html>
+
+<script>
+
+
+async function send_key(key){
+  let response = await fetch('http://localhost:5000/command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  "key" : key
+                })
+        })
+  return response
+}
+
+forward.onclick = async (e) => {let res = await send_key('w');}
+backward.onclick = async (e) => {let res = await send_key('s');}
+left.onclick = async (e) => {let res = await send_key('a');}
+right.onclick = async (e) => {let res = await send_key('d');}
+
+
+
+</script>
