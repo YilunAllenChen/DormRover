@@ -5,6 +5,7 @@ Backend of the DormRover project. Powered by Flask and python/C++ binding utilit
 
 from flask import Flask, jsonify, request, send_from_directory, Response
 from firmware_wrapper import *
+from camera_utils import vid_gen
 from time import sleep
 from random import choice
 app = Flask(__name__)
