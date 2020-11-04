@@ -7,9 +7,9 @@ import picamera
 
 
 cam = picamera.PiCamera()
-cam_stream = io.BytesIO()
 
 def vid_gen():
+    cam_stream = io.BytesIO()
     while True:
         frame = cam.capture(cam_stream, 'jpeg')
         yield (b'--frame\r\n'
