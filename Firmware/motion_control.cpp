@@ -76,25 +76,4 @@ extern "C"
 		speed = speedIn > 0 ? speedIn : -speedIn;
 		gpioPWM(BmotorPWM, speedIn);
 	}
-	float get_velocity_x()
-	{
-		return 0;
-	}
-	float get_velocity_y()
-	{
-		return 0;
-	}
-	float get_acceleration_x()
-	{
-		return 0;
-	}
-	float get_acceleration_y()
-	{
-		return 0;
-	}
-
-	float get_temperature()
-	{
-		return 0;
-	}
 }

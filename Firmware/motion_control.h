@@ -4,6 +4,7 @@
 #include <signal.h> // needed to clean up CTL C abort
 #include <sys/types.h>
 #include <unistd.h>
+#include "LSM9DS1.h"
 
 extern "C"
 {
@@ -22,14 +23,6 @@ extern "C"
 
 	void set_left(int);
 	void set_right(int);
-	float get_velocity_x();
-	float get_velocity_y();
-	float get_acceleration_x();
-	float get_acceleration_y();
-	// All functions above are local-frame based raw data
-
-	float get_temperature();
-
 
 	//More coming soon (like cyberpunk 2077)
 }
