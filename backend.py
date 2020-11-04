@@ -2,9 +2,11 @@
 Backend of the DormRover project. Powered by Flask and python/C++ binding utilities
 '''
 
-from flask import Flask, jsonify, request, send_from_directory
+
+from flask import Flask, jsonify, request, send_from_directory, Response
 from firmware_wrapper import *
 from time import sleep
+from random import choice
 app = Flask(__name__)
 
 
@@ -64,6 +66,13 @@ def command():
         "payload": "foobar"
     })
     
+
+
+@app.route('/video_feed')
+def video_feed():
+    """Video streaming route. Put this in the src attribute of an img tag."""
+    return Response(vid_gen(),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')  
 
 
 if __name__ == "__main__":
