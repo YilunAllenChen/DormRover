@@ -60,7 +60,7 @@
 
 
 async function send_key(key){
-  let response = await fetch('http://localhost:5000/command', {
+  let response = await fetch(window.location.href + 'command', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
