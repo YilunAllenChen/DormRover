@@ -11,6 +11,6 @@ cam_stream = io.BytesIO()
 
 def vid_gen():
     while True:
-        frame = cam.get_frame()
+        frame = cam.capture('a.jpg','jpeg')
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+               b'Content-Type: image/jpeg\r\n\r\n' + open('a.jpg').read() + b'\r\n')
