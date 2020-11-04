@@ -9,8 +9,8 @@ import picamera
 cam = picamera.PiCamera()
 cam_stream = io.BytesIO()
 
-def vid_gen():  
+def vid_gen():
     while True:
-        cam.capture(cam_stream, 'jpeg')
+        frame = cam.get_frame()
         yield (b'--frame\r\n'
-                b'Content-Type: image/jpeg\r\n\r\n' + cam_stream + b'\r\n')  # concat frame one by one and show result
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
