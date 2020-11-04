@@ -1,11 +1,10 @@
 '''
 Backend of the DormRover project. Interaction with C library powered by ctypes
 '''
-from picamera import PiCamera
 import io
+import picamera
 from threading import Condition
 
-camera = PiCamera()
 
 class StreamingOutput(object):
     def __init__(self):
