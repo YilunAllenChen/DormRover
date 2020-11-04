@@ -172,11 +172,11 @@ def stop() -> None:
     '''
     motion_control_lib.stop()
 
-
+camera = PiCamera()
 def vid_gen():
     """Video streaming generator function."""
     while True:
-        
+        camera.capture('t.jpg')
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
 
