@@ -11,7 +11,8 @@ int main(int argc, char *argv[])
 	sleep(1);
 	stop();
 	printf("Speed is %d\n", speed);
-	
+	LSM9DS1 IMU(IMU_MODE_I2C, 0x6b, 0x1e);
+    IMU.begin();
 	if (!IMU.begin()) {
         printf("Failed to communicate with LSM9DS1.\n");
 		exit(EXIT_FAILURE);
