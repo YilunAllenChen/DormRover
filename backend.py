@@ -3,7 +3,7 @@ Backend of the DormRover project. Powered by Flask and python/C++ binding utilit
 '''
 
 from flask import Flask, jsonify, request, send_from_directory
-# from firmware_wrapper import *
+from firmware_wrapper import *
 from time import sleep
 app = Flask(__name__)
 
@@ -60,6 +60,9 @@ def command():
         turn_right()
         sleep(1)
     stop()
+    return jsonify({
+        "payload": "foobar"
+    })
     
 
 
