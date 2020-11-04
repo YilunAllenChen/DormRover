@@ -72,6 +72,9 @@ def get_IMU() -> dict:
     ax = IMU_lib.LSM9DS1_getAccelX(imu)
     ay = IMU_lib.LSM9DS1_getAccelY(imu)
     az = IMU_lib.LSM9DS1_getAccelZ(imu)
+    ax = IMU_lib.LSM9DS1_calcAccel(imu, ax)
+    ay = IMU_lib.LSM9DS1_calcAccel(imu, ay)
+    az = IMU_lib.LSM9DS1_calcAccel(imu, ay)
     res = {
         'ax': ax,
         'ay': ay,
