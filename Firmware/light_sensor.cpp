@@ -12,25 +12,26 @@ extern "C"
 {
 	void initialize_pins()
 	{
-		if (gpioInitialise() < 0){
+		if (gpioInitialise() < 0)
+		{
 			return;
 		};
 		gpioSetMode(sensorRead, PI_INPUT);
 	}
-   
-float lightSensor()
-{
-	 // set readIn pin as input
-if(gpioRead(sensorRead))
-	{ return 1;
-		}
-	else if(!gpioRead(sensorRead))
+
+	float lightSensor()
 	{
+		// set readIn pin as input
+		if (gpioRead(sensorRead))
+		{
+			return 1;
+		}
+		else if (!gpioRead(sensorRead))
+		{
+			return 0;
+		}
 		return 0;
 	}
-	return 0;
-}
-
 }
 /*
 int main()

@@ -14,12 +14,12 @@ def load_lib(libname: str):
     try:
         libname = str(pathlib.Path().absolute() / "Firmware" / libname)
     except:
-        print(f"ERROR: {libname} not supplied. \nExiting...")
+        print("ERROR: {} not supplied. \nExiting...".format(libname))
         exit()
     try:
         return ctypes.CDLL(libname)
     except Exception as e:
-        print(f"ERROR: Can't load the {libname} dll: {e}\nExiting...")
+        print("ERROR: Can't load the {} dll: {}\nExiting...".format(libname, e))
         exit()
 
 motion_control_lib = load_lib('motion_control.so')
