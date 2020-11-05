@@ -27,57 +27,56 @@ def load_lib(libname: str):
 
 try:
     motion_control_lib = load_lib('motion_control.so')
-
     motion_control_lib.set_speed.argtypes = [ctypes.c_int]
 except:
     print("Unable to load motion control libraries. Doro will proceed without it.")
 
-try:
-    IMU_lib = load_lib('IMU.so')
-    IMU_lib.LSM9DS1_create.argtypes = []
-    IMU_lib.LSM9DS1_create.restype = c_void_p
-    IMU_lib.LSM9DS1_begin.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_begin.restype = None
-    IMU_lib.LSM9DS1_calibrate.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_calibrate.restype = None
-    IMU_lib.LSM9DS1_gyroAvailable.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_gyroAvailable.restype = c_int
-    IMU_lib.LSM9DS1_accelAvailable.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_accelAvailable.restype = c_int
-    IMU_lib.LSM9DS1_magAvailable.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_magAvailable.restype = c_int
-    IMU_lib.LSM9DS1_readGyro.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_readGyro.restype = c_int
-    IMU_lib.LSM9DS1_readAccel.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_readAccel.restype = c_int
-    IMU_lib.LSM9DS1_readMag.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_readMag.restype = c_int
-    IMU_lib.LSM9DS1_getGyroX.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_getGyroX.restype = c_float
-    IMU_lib.LSM9DS1_getGyroY.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_getGyroY.restype = c_float
-    IMU_lib.LSM9DS1_getGyroZ.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_getGyroZ.restype = c_float
-    IMU_lib.LSM9DS1_getAccelX.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_getAccelX.restype = c_float
-    IMU_lib.LSM9DS1_getAccelY.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_getAccelY.restype = c_float
-    IMU_lib.LSM9DS1_getAccelZ.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_getAccelZ.restype = c_float
-    IMU_lib.LSM9DS1_getMagX.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_getMagX.restype = c_float
-    IMU_lib.LSM9DS1_getMagY.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_getMagY.restype = c_float
-    IMU_lib.LSM9DS1_getMagZ.argtypes = [c_void_p]
-    IMU_lib.LSM9DS1_getMagZ.restype = c_float
-    IMU_lib.LSM9DS1_calcGyro.argtypes = [c_void_p, c_float]
-    IMU_lib.LSM9DS1_calcGyro.restype = c_float
-    IMU_lib.LSM9DS1_calcAccel.argtypes = [c_void_p, c_float]
-    IMU_lib.LSM9DS1_calcAccel.restype = c_float
-    IMU_lib.LSM9DS1_calcMag.argtypes = [c_void_p, c_float]
-    IMU_lib.LSM9DS1_calcMag.restype = c_float
-except:
-    print("Unable to load IMU library. Doro will proceed without it.")
+# try:
+#     IMU_lib = load_lib('IMU.so')
+#     IMU_lib.LSM9DS1_create.argtypes = []
+#     IMU_lib.LSM9DS1_create.restype = c_void_p
+#     IMU_lib.LSM9DS1_begin.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_begin.restype = None
+#     IMU_lib.LSM9DS1_calibrate.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_calibrate.restype = None
+#     IMU_lib.LSM9DS1_gyroAvailable.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_gyroAvailable.restype = c_int
+#     IMU_lib.LSM9DS1_accelAvailable.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_accelAvailable.restype = c_int
+#     IMU_lib.LSM9DS1_magAvailable.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_magAvailable.restype = c_int
+#     IMU_lib.LSM9DS1_readGyro.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_readGyro.restype = c_int
+#     IMU_lib.LSM9DS1_readAccel.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_readAccel.restype = c_int
+#     IMU_lib.LSM9DS1_readMag.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_readMag.restype = c_int
+#     IMU_lib.LSM9DS1_getGyroX.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_getGyroX.restype = c_float
+#     IMU_lib.LSM9DS1_getGyroY.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_getGyroY.restype = c_float
+#     IMU_lib.LSM9DS1_getGyroZ.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_getGyroZ.restype = c_float
+#     IMU_lib.LSM9DS1_getAccelX.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_getAccelX.restype = c_float
+#     IMU_lib.LSM9DS1_getAccelY.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_getAccelY.restype = c_float
+#     IMU_lib.LSM9DS1_getAccelZ.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_getAccelZ.restype = c_float
+#     IMU_lib.LSM9DS1_getMagX.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_getMagX.restype = c_float
+#     IMU_lib.LSM9DS1_getMagY.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_getMagY.restype = c_float
+#     IMU_lib.LSM9DS1_getMagZ.argtypes = [c_void_p]
+#     IMU_lib.LSM9DS1_getMagZ.restype = c_float
+#     IMU_lib.LSM9DS1_calcGyro.argtypes = [c_void_p, c_float]
+#     IMU_lib.LSM9DS1_calcGyro.restype = c_float
+#     IMU_lib.LSM9DS1_calcAccel.argtypes = [c_void_p, c_float]
+#     IMU_lib.LSM9DS1_calcAccel.restype = c_float
+#     IMU_lib.LSM9DS1_calcMag.argtypes = [c_void_p, c_float]
+#     IMU_lib.LSM9DS1_calcMag.restype = c_float
+# except:
+#     print("Unable to load IMU library. Doro will proceed without it.")
 
 try:
     light_sensor_lib = load_lib('light_sensor.so')
