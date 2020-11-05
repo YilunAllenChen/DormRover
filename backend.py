@@ -30,7 +30,7 @@ def get_sensor_data(sensor_name):
     data = {
         "placeholder": "foobar"
     }
-    if sensor_name == "IMU":
+    if sensor_name == "imu":
         data = get_IMU()
     elif sensor_name == "temperature":
         data = {}
