@@ -5,9 +5,10 @@ Backend of the DormRover project. Powered by Flask and python/C++ binding utilit
 
 from flask import Flask, jsonify, request, send_from_directory, Response
 from firmware_wrapper import *
-from camera_utils import vid_gen
+# from camera_utils import vid_gen
 from time import sleep
 from random import choice
+import socket
 app = Flask(__name__)
 
 
@@ -72,4 +73,7 @@ def video_feed():
 
 
 if __name__ == "__main__":
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    print("Running on IP address: ", local_ip)
     app.run(host='0.0.0.0')

@@ -14,3 +14,5 @@ make
 sudo make install
 cd ..
 rm -rf pigpio_master
+
+bash build.sh
