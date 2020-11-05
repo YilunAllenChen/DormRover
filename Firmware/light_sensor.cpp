@@ -4,59 +4,29 @@
 #include <signal.h> // needed to clean up CTL C abort
 #include <sys/types.h>
 #include <unistd.h>
-#define sensorRead 17
-#define lightControl 27
-int result = 0;
+#define light_sensor_read 17
 
 extern "C"
 {
-	void initialize_pins()
+	void initialize_light_sensor()
 	{
 		if (gpioInitialise() < 0)
 		{
 			return;
 		};
-		gpioSetMode(sensorRead, PI_INPUT);
+		gpioSetMode(light_sensor_read, PI_INPUT);
 	}
 
-	float lightSensor()
+	float get_light()
 	{
 		// set readIn pin as input
-		if (gpioRead(sensorRead))
+		if (gpioRead(light_sensor_read))
 		{
 			return 1;
 		}
-		else if (!gpioRead(sensorRead))
+		else 
 		{
 			return 0;
 		}
-		return 0;
 	}
 }
-/*
-int main()
-{
-	if (gpioInitialise() < 0)
-{
-   // pigpio initialisation failed.
-    printf("Fail");
-   return 0;
-  
-}
-gpioSetMode(sensorRead, PI_INPUT); // set readIn pin as input
-gpioSetMode(lightControl, PI_OUTPUT); // set control out pin as output
-gpioSetPWMrange(lightControl, 100);
-gpioWrite(lightControl,PI_OFF);
-while(1){
-	
-	if(gpioRead(sensorRead))
-	{result = 1;
-		printf("Fuck YOU! I can see nothing!!!! \n");
-		gpioWrite(lightControl,result);
-		sleep(0.01);
-		}
-	else if(!gpioRead(sensorRead)){result = 0;}
-	gpioWrite(lightControl,result);
-	}
-}
-*/

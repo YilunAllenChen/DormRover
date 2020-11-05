@@ -24,6 +24,7 @@ def load_lib(libname: str):
 
 motion_control_lib = load_lib('motion_control.so')
 IMU_lib = load_lib('IMU.so')
+light_sensor_lib = load_lib('light_sensor.so')
 
 
 
@@ -72,13 +73,9 @@ try:
     IMU_lib.LSM9DS1_calcAccel.restype = c_float
     IMU_lib.LSM9DS1_calcMag.argtypes = [c_void_p, c_float]
     IMU_lib.LSM9DS1_calcMag.restype = c_float
-    '''
-    IMU.get_velocity_x.restype = ctypes.c_float
-    IMU.get_velocity_y.restype = ctypes.c_float
-    IMU.get_acceleration_x.restype = ctypes.c_float
-    IMU.get_acceleration_y.restype = ctypes.c_float
-    IMU.get_temperature.restype = ctypes.c_float
-    '''
+
+    light_sensor_lib.get_light.restype = c_float
+
 except Exception as e:
     print("ERROR: Library function return and argument types declaration failed for one of the functions: {}\n Exiting...".format(e))
     exit()
@@ -93,6 +90,7 @@ if IMU_lib.LSM9DS1_begin(imu) == 0:
     print("Failed to communicate with LSM9DS1.")
     exit()
 IMU_lib.LSM9DS1_calibrate(imu)
+light_sensor_lib.initialize_light_sensor()
 
 
 
@@ -171,6 +169,9 @@ def stop() -> None:
     '''
     motion_control_lib.stop()
 
+def get_light() -> float:
+    res = light_sensor_lib.get_light()
+    print("Light sensor: {}".format(res))
 
 # motion_control_lib testing script. Run this file to test functionality.
 if __name__ == '__main__':
@@ -190,4 +191,4 @@ if __name__ == '__main__':
     print("Done. stopping...")
 
     while True:
-        print(get_IMU())
+        print(get_light())
