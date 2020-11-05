@@ -25,16 +25,16 @@ def static_web_page():
 def get_sensor_data(sensor_name):
     '''
     Function should call the pybinding function to obtain sensor data, jsonify it and return it.
-
     TODO: Implement this.
     '''
-    # if sensor_name == "IMU":
-    #     data = get_IMU()
-    # elif sensor_name == "temperature":
-    #     data = {}
-    # data = pybinding_get_sensor_data()
-    # return jsonify(data)
-    pass
+    data = {
+        "placeholder": "foobar"
+    }
+    if sensor_name == "IMU":
+        data = get_IMU()
+    elif sensor_name == "temperature":
+        data = {}
+    return jsonify(data)
 
 
 @app.route('/command', methods=['POST'])
