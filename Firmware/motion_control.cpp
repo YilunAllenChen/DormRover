@@ -66,7 +66,7 @@ extern "C"
 		gpioWrite(AmotorInA, speedIn > 0 ? PI_ON : PI_OFF); //yes, pick one after ?, no, pick one after :
 		gpioWrite(AmotorInB, speedIn > 0 ? PI_OFF : PI_ON);
 		speed = speedIn > 0 ? speedIn : -speedIn;
-		gpioPWM(AmotorPWM, speedIn);
+		gpioPWM(AmotorPWM, speed);
 	}
 
 	void set_right(int speedIn)
@@ -74,6 +74,6 @@ extern "C"
 		gpioWrite(BmotorInA, speedIn > 0 ? PI_ON : PI_OFF);
 		gpioWrite(BmotorInB, speedIn > 0 ? PI_OFF : PI_ON);
 		speed = speedIn > 0 ? speedIn : -speedIn;
-		gpioPWM(BmotorPWM, speedIn);
+		gpioPWM(BmotorPWM, speed);
 	}
 }
