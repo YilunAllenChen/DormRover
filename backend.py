@@ -32,8 +32,8 @@ def get_sensor_data(sensor_name):
     }
     if sensor_name == "imu":
         data = get_IMU()
-    elif sensor_name == "temperature":
-        data = {}
+    else:
+        data = {"ERROR": "Not supported or not implemented"}
     return jsonify(data)
 
 
@@ -41,12 +41,7 @@ def get_sensor_data(sensor_name):
 def command():
     '''
     Function should call the pybinding function to execute motor commands.
-
-    TODO: Implement this.
     '''
-    # params = request.form # request.form should be of dict format
-    # pybinding_motion_control(params)
-    # return
     print('request data', request.json)
 
     key = request.json['key']
