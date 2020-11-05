@@ -25,15 +25,15 @@ def load_lib(libname: str):
             libname, e))
         exit()
 
-
-motion_control_lib = load_lib('motion_control.so')
-IMU_lib = load_lib('IMU.so')
-light_sensor_lib = load_lib('light_sensor.so')
-
-# Function return and parameter types declaration
 try:
-    motion_control_lib.set_speed.argtypes = [ctypes.c_int]
+    motion_control_lib = load_lib('motion_control.so')
 
+    motion_control_lib.set_speed.argtypes = [ctypes.c_int]
+except:
+    print("Unable to load motion control libraries. Doro will proceed without it.")
+
+try:
+    IMU_lib = load_lib('IMU.so')
     IMU_lib.LSM9DS1_create.argtypes = []
     IMU_lib.LSM9DS1_create.restype = c_void_p
     IMU_lib.LSM9DS1_begin.argtypes = [c_void_p]
@@ -76,11 +76,16 @@ try:
     IMU_lib.LSM9DS1_calcAccel.restype = c_float
     IMU_lib.LSM9DS1_calcMag.argtypes = [c_void_p, c_float]
     IMU_lib.LSM9DS1_calcMag.restype = c_float
+except:
+    print("Unable to load IMU library. Doro will proceed without it.")
 
+try:
+    light_sensor_lib = load_lib('light_sensor.so')
     light_sensor_lib.get_light.restype = c_float
-except Exception as e:
-    print("ERROR: Library function return and argument types declaration failed for one of the functions: {}\n Exiting...".format(e))
-    exit()
+except:
+    print("Unable to load light sensor library. Doro will proceed without it.")
+
+
 
 # System initialization
 try:
