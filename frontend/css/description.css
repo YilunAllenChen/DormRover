@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@400;700&display=swap');
+
+
+body 
+{
+    font-family: 'Big Shoulders Stencil Text', sans-serif;
+    margin: 2;
+}
+
+/* top section */
+.navigation
+{
+    text-align: center;
+    padding-bottom: 2em;
+    animation: fadeIn 2s forwards ;
+
+}
+
+
+@keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+        transform: translateY(-2em);
+    }
+    to
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+}
+
+
+
+.navigation a
+{
+color: #586a6e;
+font-weight: bold;
+font-size: 1.2rem;
+}
+
+.pdescription
+{
+    text-align: left;
+    padding-bottom: 2em;
+    animation: fadeIn 2s forwards ;
+    margin: 0.5em;
+    background: #586a6e url('../images/marsrover2.jpg') ;
+    background-repeat: repeat-y;
+    font-size: 1.5em;
+    background-position: 0% 0%; 
+    color: yellow;  
+    text-shadow: 1px 0 0 black, 0 -1px 0 black, 0 1px 0 black, -1px 0 0 black; 
+
+}

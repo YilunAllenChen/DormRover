@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@400;700&display=swap');
+
+
+
+body 
+{
+    font-family: 'Big Shoulders Stencil Text', sans-serif;
+    margin: 2;
+}
+
+/* top section */
+.navigation
+{
+    text-align: center;
+    padding-bottom: 2em;
+    animation: fadeIn 2s forwards ;
+
+}
+
+
+@keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+        transform: translateY(-2em);
+    }
+    to
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+}
+
+
+
+.navigation a
+{
+color: #586a6e;
+font-weight: bold;
+font-size: 1.2rem;
+}
+
+img
+{
+    width: 100%;
+}
+
+section
+{
+    margin: 0 0.5em;
+}
+
+h1
+{
+    font-size: 1.5rem;
+    margin: 0.5em 0 0.5em;
+}
+
+/*
+h1 span
+{    
+    font-size: 2rem;
+    z-index: 1;
+}
+
+h1 span::before
+{
+    content: ' ';
+    position: absolute;
+    width: 3em;
+    background: #586a6e;
+    height: .2em;
+    bottom: 0;
+    z-index: -1;
+    margin-left: -.3em;
+}*/
+
+/* sensor section ==================================================*/
+.sensorreading
+{
+    margin: 0.5em;
+    background: #586a6e url('../images/marsrover.jpg') ;
+    background-repeat: repeat-y;
+    font-size: 1.5em;
+    background-position: 0% 0%;      
+}
+
+
+/* input text style config=============*/
+input[type = text]
+{
+    border: 1px solid;
+    height: 1em;
+    width: 4%;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+
+/* input button style config=============*/
+input[type = button]
+{
+    background-color: rgba(255, 179, 16, 0.705);
+    color: black;
+    border-radius: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+input[type = button]:hover
+{
+    background-color: rgba(255, 179, 16, 0.315);
+}
+
+
+
+/* RGB Slider conig conig===========================================*/  
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 18px 0;
+    width: 100%;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #367ebd;
+  }
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: #3071a9;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #367ebd;
+  }
+
+
+  input[type='range'] {
+    overflow: hidden;
+    width: 80px;
+    -webkit-appearance: none;
+    background-color: #9a905d;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 20px;
+    -webkit-appearance: none;
+    color: #13bba4;
+    margin-top: -1px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 20px;
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: ew-resize;
+    background: #434343;
+    box-shadow: -80px 0 0 80px #43e5f7;
+  }
+
+}
+/** FF*/
+input[type="range"]::-moz-range-progress {
+background-color: #43e5f7; 
+}
+input[type="range"]::-moz-range-track {  
+background-color: #9a905d;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+background-color: #43e5f7; 
+}
+input[type="range"]::-ms-fill-upper {  
+background-color: #9a905d;
+}
+/* RGB Slider conig end===========================================*/ 
+
+.overlay
+{
+    position: absolute;
+    height:100vh;
+    width: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1;
+    place-content: center;
+    color: white;
+    display: none;
+    /*opacity: 0;*/
+
+}
