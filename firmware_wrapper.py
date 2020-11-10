@@ -138,7 +138,7 @@ def get_IMU() -> dict:
         ay = IMU_lib.LSM9DS1_calcAccel(imu, IMU_lib.LSM9DS1_getAccelY(imu))
         az = IMU_lib.LSM9DS1_calcAccel(imu, IMU_lib.LSM9DS1_getAccelZ(imu))
         mx = IMU_lib.LSM9DS1_calcMag(imu, IMU_lib.LSM9DS1_getMagX(imu))
-        my = IMU_lib.LSM9DS1_calcMag(imu, IMU_lib.LSM9DS1_getMagy(imu))
+        my = IMU_lib.LSM9DS1_calcMag(imu, IMU_lib.LSM9DS1_getMagY(imu))
         mz = IMU_lib.LSM9DS1_calcMag(imu, IMU_lib.LSM9DS1_getMagZ(imu))
         gx = IMU_lib.LSM9DS1_calcGyro(imu, IMU_lib.LSM9DS1_getGyroX(imu))
         gy = IMU_lib.LSM9DS1_calcGyro(imu, IMU_lib.LSM9DS1_getGyroY(imu))
