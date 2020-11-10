@@ -163,7 +163,7 @@ def get_temp() -> float:
     '''
     Function uses pre-built c++ libraries and obtain temperature
     '''
-    return IMU_lib.LSM9DS1_readTemp(imu)
+    return (IMU_lib.LSM9DS1_readTemp(imu) / 16 + 25)
 
 def set_speed(speed: int) -> None:
     '''
@@ -235,4 +235,6 @@ if __name__ == '__main__':
     # print("Done. stopping...")
 
     while True:
-        print(get_light())
+        # print(get_light())
+        print('imu', get_IMU())
+        print('temp', get_temp())
