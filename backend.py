@@ -33,6 +33,8 @@ def get_sensor_data(sensor_name):
     }
     if sensor_name == "imu":
         data = get_IMU()
+    elif sensor_name == 'temp':
+        data = get_temp()
     else:
         data = {"ERROR": "Not supported or not implemented"}
     return jsonify(data)
