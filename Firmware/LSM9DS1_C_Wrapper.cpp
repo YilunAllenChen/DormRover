@@ -37,6 +37,10 @@ void LSM9DS1_readMag(LSM9DS1* obj) {
     obj->readMag();
 }
 
+void LSM9DS1_readTemp(LSM9DS1* obj) {
+    obj->readTemp();
+}
+
 float LSM9DS1_getGyroX(LSM9DS1* obj) {
     return obj->gx;
 }

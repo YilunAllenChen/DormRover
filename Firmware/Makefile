@@ -23,7 +23,7 @@ IMU.so: LSM9DS1_C_Wrapper.o LSM9DS1.o
 # 	$(CC) -Wall -O2 -fPIC -lwiringPi -lpigpio -lrt *.cpp -o firmware.so
 
 light_sensor.so: light_sensor.cpp
-	$(CC) -Wall -O -shared -lpigpio -lrt light_sensor.cpp -o light_sensor.so
+	$(CC) -Wall -O2 -shared -lpigpio -lrt light_sensor.cpp -o light_sensor.so
 
 clean:
 	rm -f *.o *.so
