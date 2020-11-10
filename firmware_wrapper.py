@@ -122,27 +122,36 @@ def get_IMU() -> dict:
     :return: returns a dictionary of all data.
         Example format: 
         {
-            'velocity_x': 1.0,
-            'velocity_y': 1.5,
-            'humidity': 0.63
+            'gx': 1.2,
+            'ay': 3.2,
+            'mz': 1.1
         }
     '''
-    res = None
     try:
         # if IMU_lib.LSM9DS1_accelAvailable(imu) == 0:
         IMU_lib.LSM9DS1_readAccel(imu)
-        ax = IMU_lib.LSM9DS1_getAccelX(imu)
-        ay = IMU_lib.LSM9DS1_getAccelY(imu)
-        az = IMU_lib.LSM9DS1_getAccelZ(imu)
-        ax = IMU_lib.LSM9DS1_calcAccel(imu, ax)
-        ay = IMU_lib.LSM9DS1_calcAccel(imu, ay)
-        az = IMU_lib.LSM9DS1_calcAccel(imu, ay)
-        res = {
+        IMU_lib.LSM9DS1_readMag(imu)
+        IMU_lib.LSM9DS1_readGyro(imu)
+        ax = IMU_lib.LSM9DS1_calcAccel(imu, IMU_lib.LSM9DS1_getAccelX(imu))
+        ay = IMU_lib.LSM9DS1_calcAccel(imu, IMU_lib.LSM9DS1_getAccelY(imu))
+        az = IMU_lib.LSM9DS1_calcAccel(imu, IMU_lib.LSM9DS1_getAccelZ(imu))
+        mx = IMU_lib.LSM9DS1_calcMag(imu, IMU_lib.LSM9DS1_getMagX(imu))
+        my = IMU_lib.LSM9DS1_calcMag(imu, IMU_lib.LSM9DS1_getMagy(imu))
+        mz = IMU_lib.LSM9DS1_calcMag(imu, IMU_lib.LSM9DS1_getMagZ(imu))
+        gx = IMU_lib.LSM9DS1_calcGyro(imu, IMU_lib.LSM9DS1_getGyroX(imu))
+        gy = IMU_lib.LSM9DS1_calcGyro(imu, IMU_lib.LSM9DS1_getGyroY(imu))
+        gz = IMU_lib.LSM9DS1_calcGyro(imu, IMU_lib.LSM9DS1_getGyroZ(imu))
+        return {
             'ax': ax,
             'ay': ay,
-            'az': az
+            'az': az,
+            'mx': mx,
+            'my': my,
+            'mz': mz,
+            'gx': gx,
+            'gy': gy,
+            'gz': gz
         }
-        return res
     except Exception as e:
         return {
             "ERROR": e
