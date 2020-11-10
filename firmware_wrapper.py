@@ -40,6 +40,8 @@ try:
     IMU_lib.LSM9DS1_create.restype = c_void_p
     IMU_lib.LSM9DS1_begin.argtypes = [c_void_p]
     IMU_lib.LSM9DS1_begin.restype = None
+    IMU_lib.LSM9DS1_readTemp.restype = c_float
+    IMU_lib.LSM9DS1_readTemp.argtypes = [c_void_p]
     IMU_lib.LSM9DS1_calibrate.argtypes = [c_void_p]
     IMU_lib.LSM9DS1_calibrate.restype = None
     IMU_lib.LSM9DS1_gyroAvailable.argtypes = [c_void_p]
@@ -156,6 +158,12 @@ def get_IMU() -> dict:
         return {
             "ERROR": e
         }
+
+def get_temp() -> float:
+    '''
+    Function uses pre-built c++ libraries and obtain temperature
+    '''
+    return IMU_lib.LSM9DS1_readTemp(imu)
 
 def set_speed(speed: int) -> None:
     '''
