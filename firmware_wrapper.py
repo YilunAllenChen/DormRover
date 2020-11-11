@@ -15,7 +15,7 @@ system_status = {
     'IMU': off,
     'Light Sensor': off,
     'Camera': off,
-    'Lidar': unavailable + " Currently WIP. Coming soon."
+    'Lidar': off
 }
 
 
@@ -38,7 +38,7 @@ def load_lib(libname: str):
         libname = str(pathlib.Path().absolute() / "Firmware" / libname)
         return ctypes.CDLL(libname)
     except Exception as e:
-        print("ERROR: Library {} could not be loaded: {}".format(
+        print("[\33[91m ERROR \33[0m]: Library {} could not be loaded: {}".format(
             libname, e))
 
 
@@ -106,6 +106,11 @@ try:
 except:
     print("Unable to load light sensor library. Doro will proceed without it.")
 
+# lidar library
+try:
+    lidar_lib = load_lib('lidar.so')
+except:
+    print("Unable to load lidar library. Doro will proceed without it.")
 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
                 Library utilities initialization and setup
@@ -136,6 +141,14 @@ try:
     system_status['Light Sensor'] = on
 except Exception as e:
     print("Failed to initialize light sensor: {}. \nDORO will proceed without light sensor functionalities")
+
+
+try:
+    lidar = lidar_lib.lidar_create()
+    
+    system_status['Lidar'] = on
+except Exception as e:
+    print("Failed to initialize lidar: {}. \nDORO will proceed without light sensor functionalities")
 
 
 # print out sensor system status
