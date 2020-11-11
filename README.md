@@ -31,7 +31,7 @@ The project consists three major parts:
 2. Pull this repository onto your Pi.
 3. Run `./setup` command. This only needs to be run once for installing necessary utilities.
     - After the first `setup` run, later on after you make modifications to the program you could just run `.build` to re-compile the program without reinstalling everything.
-5. Run `backend.py` to start the server
+5. Run `sudo python3 backend.py` to start the server
 6. In your Pi terminal use `ifconfig` to get your IP address
 7. Access the web GUI from your computer by going to the IP address with ":5000" appended.
 8. Use WASD to control the robot and have fun.
@@ -57,6 +57,13 @@ The project consists three major parts:
 - Reorganized repos
 - Improved Readme
 
+### 2020.11.1
+- Created generic frontend for testing
+- Improved backend functionality and exception handling with malfunctioning libraries
+
+### 2020.11.10
+- Created firmware for lidar sensors
+- Integrated lidar firmware and created corresponding wrapper functions and backend APIs
 
 
 # Useful Commands
