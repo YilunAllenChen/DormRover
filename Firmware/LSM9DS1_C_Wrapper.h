@@ -15,7 +15,7 @@ extern "C" {
     void LSM9DS1_readGyro(LSM9DS1* obj);
     void LSM9DS1_readAccel(LSM9DS1* obj);
     void LSM9DS1_readMag(LSM9DS1* obj);
-    void LSM9DS1_readTemp(LSM9DS1* obj);
+    float LSM9DS1_readTemp(LSM9DS1* obj);
     // Get data
     float LSM9DS1_getGyroX(LSM9DS1* obj);
     float LSM9DS1_getGyroY(LSM9DS1* obj);
