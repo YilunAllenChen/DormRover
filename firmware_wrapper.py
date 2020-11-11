@@ -138,7 +138,6 @@ except Exception as e:
     print("Failed to initialize light sensor: {}. \nDORO will proceed without light sensor functionalities")
 
 
-
 # print out sensor system status
 print("\n", "*"*14, "Sensor System Status", "*"*14)
 for (item, status) in system_status.items():
@@ -188,15 +187,24 @@ def get_IMU() -> dict:
         }
     except Exception as e:
         return {
-            "ERROR": e
+            "ERROR": str(e)
         }
+
 
 def get_temp() -> float:
     '''
     Function uses pre-built c++ libraries and obtain temperature
     '''
-    return (IMU_lib.LSM9DS1_readTemp(imu) / 16 + 25)
+    try:
+        return (IMU_lib.LSM9DS1_readTemp(imu) / 16 + 25)
+    except Exception as e:
+        return -9999
 
+def get_lidar() -> int:
+    '''
+    Function uses pre-built c++ libraries to obtain distance to nearby objects with its lidar sensor.
+    '''
+    return -9999
 
 def set_speed(speed: int) -> None:
     '''
@@ -243,12 +251,12 @@ def stop() -> None:
 
 
 def get_light() -> float:
-    res = light_sensor_lib.get_light()
-    print("Light sensor: {}".format(res))
-    return res
-
-
-
+    try:
+        res = light_sensor_lib.get_light()
+        print("Light sensor: {}".format(res))
+        return res
+    except:
+        return -9999
 
 # motion_control_lib testing script. Run this file to test functionality.
 if __name__ == '__main__':

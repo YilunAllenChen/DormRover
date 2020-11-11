@@ -35,6 +35,8 @@ def get_sensor_data(sensor_name):
         data = get_IMU()
     elif sensor_name == 'temp':
         data = get_temp()
+    elif sensor_name == 'lidar':
+        data = get_lidar()
     else:
         data = {"ERROR": "Not supported or not implemented"}
     return jsonify(data)
@@ -75,18 +77,12 @@ def video_feed():
 
 
 if __name__ == "__main__":
-    
+    print("Server starting...")
     try:
         import socket
-
-        def get_my_ip_address(remote_server="google.com"):
-            """
-            Return the/a network-facing IP number for this system.
-            """
-            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s: 
-                s.connect((remote_server, 80))
-                return s.getsockname()[0]
-        print("Currently running on IP address: [\33[94m {} \33[0m]".format(get_my_ip_address()))
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s: 
+            s.connect(("google.com", 80))
+            print("Currently running on IP address: [\33[94m {} \33[0m]".format(s.getsockname()[0]))
     except:
         print("DORO doesn't seem to be connected to the internet - It can't figure out the public IP address itself. Try 'ifconfig'.")
 
