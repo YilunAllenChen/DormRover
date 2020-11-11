@@ -111,7 +111,7 @@ try:
     lidar_lib = load_lib('lidar.so')
     lidar_lib.lidar_create.restype = c_void_p
     lidar_lib.lidar_get_distance.argtypes = [c_void_p]
-    lidar_lib.lidar_get_distance.restype = [c_uint16]
+    lidar_lib.lidar_get_distance.restype = c_uint16
 except:
     print("Unable to load lidar library. Doro will proceed without it.")
 
