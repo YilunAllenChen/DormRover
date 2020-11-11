@@ -11,7 +11,7 @@ firmware.o: firmware_test.cpp
 	$(CC) -Wall -O2 -fPIC -lwiringPi -lpigpio -lrt *.cpp -o firmware.o
 
 VL53L0X.o: VL53L0X.cpp
-	$(CC) -Wall -O2 VL53L0X.cpp -o VL53L0X.o
+	$(CC) -Wall -O2 -fPIC -c VL53L0X.cpp -o VL53L0X.o
 	
 # dynamic library
 
@@ -28,7 +28,7 @@ light_sensor.so: light_sensor.cpp
 	$(CC) -Wall -O2 -shared -lpigpio -lrt light_sensor.cpp -o light_sensor.so
 
 VL53L0X_C_Wrapper.o: VL53L0X_C_Wrapper.cpp
-	$(CC) -Wall -O2 VL53L0X_C_Wrapper.cpp -o VL53L0X_C_Wrapper.o
+	$(CC) -Wall -O2 -fPIC -c VL53L0X_C_Wrapper.cpp -o VL53L0X_C_Wrapper.o
 
 lidar.so: VL53L0X_C_Wrapper.o VL53L0X.o
 	$(CC) -Wall -O2 -shared VL53L0X.o VL53L0X_C_Wrapper.o -o lidar.so
