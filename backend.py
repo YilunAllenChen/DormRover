@@ -82,7 +82,7 @@ if __name__ == "__main__":
         import socket
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s: 
             s.connect(("google.com", 80))
-            print("Currently running on IP address: [\33[94m {} \33[0m]".format(s.getsockname()[0]))
+            print("Currently running on IP address(public): [\33[94m {}:5000 \33[0m]".format(s.getsockname()[0]))
     except:
         print("DORO doesn't seem to be connected to the internet - It can't figure out the public IP address itself. Try 'ifconfig'.")
 
