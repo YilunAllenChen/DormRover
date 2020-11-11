@@ -5,7 +5,7 @@ Backend of the DormRover project. Powered by Flask and python/C++ binding utilit
 
 from flask import Flask, jsonify, request, send_from_directory, Response
 from firmware_wrapper import *
-# from camera_utils import vid_gen
+from requests import get
 from time import sleep
 from random import choice
 import socket
@@ -75,7 +75,19 @@ def video_feed():
 
 
 if __name__ == "__main__":
-    hostname = socket.gethostname()
-    local_ip = socket.gethostbyname(hostname)
-    print("Running on IP address: ", local_ip)
+    
+    try:
+        import socket
+
+        def get_my_ip_address(remote_server="google.com"):
+            """
+            Return the/a network-facing IP number for this system.
+            """
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s: 
+                s.connect((remote_server, 80))
+                return s.getsockname()[0]
+        print("Currently running on IP address: [\33[94m {} \33[0m]".format(get_my_ip_address()))
+    except:
+        print("DORO doesn't seem to be connected to the internet - It can't figure out the public IP address itself. Try 'ifconfig'.")
+
     app.run(host='0.0.0.0')

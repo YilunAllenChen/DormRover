@@ -1,5 +1,9 @@
 '''
-Reference: https://github.com/Mjrovai/Video-Streaming-with-Flask/blob/master/camWebServer/camera_pi.py
+Util to stream camera data. Modified so that it uses memory instead of hard disk (better performance.)
+
+Author: Yilun "Allen" Chen
+
+Credit: https://github.com/Mjrovai/Video-Streaming-with-Flask/blob/master/camWebServer/camera_pi.py
 '''
 
 
