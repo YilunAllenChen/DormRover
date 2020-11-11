@@ -10,7 +10,7 @@
 #include <fstream>
 #include <mutex>
 
-#include "VL53L0X_defines.hpp"
+#include "VL53L0X_defines.h"
 
 class VL53L0X {
 	public:
@@ -30,11 +30,6 @@ class VL53L0X {
 		VL53L0X(const int16_t xshutGPIOPin = -1, bool ioMode2v8 = true, const uint8_t address = VL53L0X_ADDRESS_DEFAULT);
 
 		/*** Public methods ***/
-
-		/**
-		 * Put all initialization of the LIDAR sensor in one function, so it can be used in python library
-		 */
-		void LIDARInit();
 		/**
 		 * \brief Initialize the sensor's hardware and, if needed, GPIO access on the host side.
 		 *
