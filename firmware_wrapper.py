@@ -8,8 +8,8 @@ import pathlib
 
 # Load all libraries
 
-on = '[\33[31m  ON  \33[0m]'
-off = '[\33[31m OFF  \33[0m]'
+on = '[\33[92m  ON  \33[0m]'
+off = '[\33[91m OFF  \33[0m]'
 
 system_status = {
     'Motion Control': off,
