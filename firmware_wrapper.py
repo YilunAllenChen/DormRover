@@ -1,21 +1,34 @@
 '''
-Backend of the DormRover project. Interaction with C library powered by ctypes
+Firmware wrapper to bundle all c++ libraries together for backend to use.
 '''
 
 from ctypes import *
 import ctypes
 import pathlib
-
-# Load all libraries
+# Initialize sensor status reports
 
 on = '[\33[92m  ON  \33[0m]'
 off = '[\33[91m OFF  \33[0m]'
-
+unavailable = '[\33[93m N/A  \33[0m]'
 system_status = {
     'Motion Control': off,
     'IMU': off,
-    'Light Sensor': off
+    'Light Sensor': off,
+    'Camera': off,
+    'Lidar': unavailable + " Currently WIP. Coming soon."
 }
+
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+            Load all libraries and define their argument types and return types
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+try:
+    from camera_utils import vid_gen
+    system_status['Camera'] = on
+except:
+    pass
+
 
 def load_lib(libname: str):
     '''
@@ -28,12 +41,15 @@ def load_lib(libname: str):
         print("ERROR: Library {} could not be loaded: {}".format(
             libname, e))
 
+
+# motion control library
 try:
     motion_control_lib = load_lib('motion_control.so')
     motion_control_lib.set_speed.argtypes = [ctypes.c_int]
 except:
     print("Unable to load motion control libraries. Doro will proceed without it.")
 
+# IMU library
 try:
     IMU_lib = load_lib('IMU.so')
     IMU_lib.LSM9DS1_create.argtypes = []
@@ -83,6 +99,7 @@ try:
 except:
     print("Unable to load IMU library. Doro will proceed without it.")
 
+# light sensor library
 try:
     light_sensor_lib = load_lib('light_sensor.so')
     light_sensor_lib.get_light.restype = c_float
@@ -90,8 +107,10 @@ except:
     print("Unable to load light sensor library. Doro will proceed without it.")
 
 
-
-# System initialization
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+                Library utilities initialization and setup
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+# motion control library
 try:
     motion_control_lib.initialize_pins()
     motion_control_lib.set_speed(20)
@@ -99,6 +118,7 @@ try:
 except Exception as e:
     print("Failed to initialize motion control utilities: {} \nDORO will not be able to react to your command.".format(e))
 
+# IMU library
 try:
     imu = IMU_lib.LSM9DS1_create()
     IMU_lib.LSM9DS1_begin(imu)
@@ -110,11 +130,24 @@ try:
 except Exception as e:
     print("Failed to initialize IMU unit: {}. \nDORO will proceed without IMU functionalities".format(e))
 
+# Light sensor library
 try:
     light_sensor_lib.initialize_light_sensor()
     system_status['Light Sensor'] = on
 except Exception as e:
     print("Failed to initialize light sensor: {}. \nDORO will proceed without light sensor functionalities")
+
+
+
+# print out sensor system status
+print("\n", "*"*14, "Sensor System Status", "*"*14)
+for (item, status) in system_status.items():
+    print(" "*(15-len(item)) + item, ":", status)
+print("*"*50, '\n')
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+                        Wrapper function definitions
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 
 def get_IMU() -> dict:
@@ -130,7 +163,6 @@ def get_IMU() -> dict:
         }
     '''
     try:
-        # if IMU_lib.LSM9DS1_accelAvailable(imu) == 0:
         IMU_lib.LSM9DS1_readAccel(imu)
         IMU_lib.LSM9DS1_readMag(imu)
         IMU_lib.LSM9DS1_readGyro(imu)
@@ -164,6 +196,7 @@ def get_temp() -> float:
     Function uses pre-built c++ libraries and obtain temperature
     '''
     return (IMU_lib.LSM9DS1_readTemp(imu) / 16 + 25)
+
 
 def set_speed(speed: int) -> None:
     '''
@@ -212,9 +245,9 @@ def stop() -> None:
 def get_light() -> float:
     res = light_sensor_lib.get_light()
     print("Light sensor: {}".format(res))
+    return res
 
-for (item, status) in system_status.items():
-    print(" "*(15-len(item)) + item , ":", status)
+
 
 
 # motion_control_lib testing script. Run this file to test functionality.
