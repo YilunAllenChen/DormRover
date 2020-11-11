@@ -143,14 +143,14 @@ try:
     light_sensor_lib.initialize_light_sensor()
     system_status['Light Sensor'] = on
 except Exception as e:
-    print("Failed to initialize light sensor: {}. \nDORO will proceed without light sensor functionalities")
+    print("Failed to initialize light sensor: {}. \nDORO will proceed without light sensor functionalities".format(e))
 
 
 try:
     lidar = lidar_lib.lidar_create()
     system_status['Lidar'] = on
 except Exception as e:
-    print("Failed to initialize lidar: {}. \nDORO will proceed without light sensor functionalities")
+    print("Failed to initialize lidar: {}. \nDORO will proceed without light sensor functionalities".format(e))
 
 
 # print out sensor system status
