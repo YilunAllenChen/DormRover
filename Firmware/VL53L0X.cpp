@@ -1,5 +1,5 @@
 #include "VL53L0X.h"
-#include "I2Cdev.h"
+// #include "I2Cdev.h"
 
 #include <cerrno>
 // strerror()
@@ -9,7 +9,7 @@
 #include <string>
 #include <unistd.h>
 #include <stdexcept>
-
+#include "I2Cdev.cpp"
 /*** Defines ***/
 
 // Record the current time to check an upcoming timeout against

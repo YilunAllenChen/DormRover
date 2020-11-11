@@ -5,7 +5,7 @@
 
 extern "C" {
     VL53L0X* lidar_create();
-    void lidar_get_distance(VL53L0X* obj);
+    uint16_t lidar_get_distance(VL53L0X* obj);
     // void lidar_initialize(VL53L0X* obj);
     // void lidar_powerOn(VL53L0X* obj);
     // void lidar_powerOff(VL53L0X* obj);
