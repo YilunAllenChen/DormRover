@@ -109,6 +109,9 @@ except:
 # lidar library
 try:
     lidar_lib = load_lib('lidar.so')
+    lidar_lib.lidar_create.restype = c_void_p
+    lidar_lib.lidar_get_distance.argtypes = [c_void_p]
+    lidar_lib.lidar_get_distance.restype = [c_uint16]
 except:
     print("Unable to load lidar library. Doro will proceed without it.")
 
@@ -145,7 +148,6 @@ except Exception as e:
 
 try:
     lidar = lidar_lib.lidar_create()
-    
     system_status['Lidar'] = on
 except Exception as e:
     print("Failed to initialize lidar: {}. \nDORO will proceed without light sensor functionalities")
@@ -217,7 +219,7 @@ def get_lidar() -> int:
     '''
     Function uses pre-built c++ libraries to obtain distance to nearby objects with its lidar sensor.
     '''
-    return -9999
+    return lidar_lib.get_dist(lidar)
 
 def set_speed(speed: int) -> None:
     '''
