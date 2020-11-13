@@ -22,6 +22,8 @@ import { mainListItems, secondaryListItems } from './listItems';
 import System_status from './System_status';
 import Orders from './Orders';
 
+//keyboard event  reference: https://usehooks.com/useKeyPress/
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
