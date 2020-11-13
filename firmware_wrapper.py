@@ -219,7 +219,10 @@ def get_lidar() -> int:
     '''
     Function uses pre-built c++ libraries to obtain distance to nearby objects with its lidar sensor.
     '''
-    return lidar_lib.lidar_get_distance(lidar)
+    try:
+        return lidar_lib.lidar_get_distance(lidar)
+    except Exception as e:
+        return {"ERROR": str(e)}
 
 def set_speed(speed: int) -> None:
     '''
@@ -294,3 +297,4 @@ if __name__ == '__main__':
         # print(get_light())
         print('imu', get_IMU())
         print('temp', get_temp())
+        print("light: ", get_light())

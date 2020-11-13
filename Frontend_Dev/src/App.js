@@ -20,7 +20,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import System_status from './System_status';
-import Orders from './Orders';
+import Databoard from './Databoard';
 
 //keyboard event  reference: https://usehooks.com/useKeyPress/
 
@@ -188,7 +188,7 @@ export default function Dashboard() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <Databoard />
               </Paper>
             </Grid>
           </Grid>
