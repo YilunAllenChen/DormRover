@@ -4,12 +4,15 @@ Backend of the DormRover project. Powered by Flask and python/C++ binding utilit
 
 
 from flask import Flask, jsonify, request, send_from_directory, Response
+from flask_cors import CORS
 from firmware_wrapper import *
 from requests import get
 from time import sleep
 from random import choice
 import socket
 app = Flask(__name__)
+CORS(app)
+
 
 
 # Front page
@@ -23,6 +26,7 @@ def static_web_page():
 
 
 @app.route('/sensor_data/<sensor_name>', methods=['GET'])
+
 def get_sensor_data(sensor_name):
     '''
     Function should call the pybinding function to obtain sensor data, jsonify it and return it.
