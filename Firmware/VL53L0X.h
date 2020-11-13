@@ -5,7 +5,6 @@
 
 #ifndef _VL53L0X_H
 #define _VL53L0X_H
-
 #include <cstdint>
 #include <fstream>
 #include <mutex>
