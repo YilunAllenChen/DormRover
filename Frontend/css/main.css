@@ -101,21 +101,38 @@ input[type = text]
 
 
 /* input button style config=============*/
+.button
+{
+    background-color: rgba(255, 179, 16, 0.705);
+    color: black;
+    border-radius: 0.5em;
+    font-size: 1.6em;
+    cursor: pointer;
+    margin-left:10px;
+}
+
+.button:hover
+{
+    background-color: rgba(255, 179, 16, 0.315);
+}
+
+
+
+
+
 input[type = button]
 {
     background-color: rgba(255, 179, 16, 0.705);
     color: black;
     border-radius: 0.5em;
     font-size: 1em;
-    cursor: pointer;
+    cursor: pointer;    
 }
 
 input[type = button]:hover
 {
     background-color: rgba(255, 179, 16, 0.315);
 }
-
-
 
 /* RGB Slider conig conig===========================================*/  
 input[type=range] {
