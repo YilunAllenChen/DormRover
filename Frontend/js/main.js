@@ -25,6 +25,10 @@ async function send_key(key)
     return response
   }
 
+
+
+  
+
 /*
 
   function processForm() 
@@ -85,18 +89,6 @@ async function fetch(window.location.href + 'get_sensor_data', {
 
 
 
-
-  forward.onclick = async (e) => {let res = await send_key('w');}
-  
-
-  backward.onclick = async (e) => {let res = await send_key('s');}
-
-  left.onclick = async (e) => {let res = await send_key('a');}
-
-  right.onclick = async (e) => {let res = await send_key('d');}
-
-  //send keyboard event
-  document.onkeydown = async (e) => {let res = await send_key(e);}
 
 
 

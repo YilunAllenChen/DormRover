@@ -13,7 +13,7 @@ import os
 import socket
 app = Flask(__name__, 
     template_folder=os.path.abspath("./Frontend/"),
-    static_folder=os.path.abspath("./Frontend/"))
+    static_folder=os.path.abspath("./Frontend/static"))
 CORS(app)
 
 
