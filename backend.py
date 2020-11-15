@@ -9,8 +9,11 @@ from firmware_wrapper import *
 from requests import get
 from time import sleep
 from random import choice
+import os
 import socket
-app = Flask(__name__)
+app = Flask(__name__, 
+    template_folder=os.path.abspath("./Frontend/"),
+    static_folder=os.path.abspath("./Frontend/"))
 CORS(app)
 
 
