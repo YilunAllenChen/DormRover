@@ -15,7 +15,8 @@ system_status = {
     'IMU': off,
     'Light Sensor': off,
     'Camera': off,
-    'Lidar': off
+    'Lidar': off,
+    'Servo': off
 }
 
 
@@ -115,6 +116,12 @@ try:
 except:
     print("Unable to load lidar library. Doro will proceed without it.")
 
+
+try:
+    servo_lib = load_lib('servo.so')
+except:
+    print("Unable to load servo library. Doro will proceed without it.")
+
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
                 Library utilities initialization and setup
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -152,6 +159,11 @@ try:
 except Exception as e:
     print("Failed to initialize lidar: {}. \nDORO will proceed without light sensor functionalities".format(e))
 
+try:
+    servo_lib.servo_initialize_pins()
+    system_status['Servo'] = on
+except Exception as e:
+    print("Failed to initialize servo library. {} \nDORO will proceed without servo functionalities".format(e))
 
 # print out sensor system status
 print("\n", "*"*14, "Sensor System Status", "*"*14)
@@ -285,6 +297,18 @@ def stop() -> None:
         print("ERROR: Motion control system is offline")
     motion_control_lib.stop()
 
+def move_servo(direction: str) -> None:
+    '''
+    Function uses pre-built c++ libraries and let the servo move by 18+-2 degree
+
+    :param direction: the direction to move to. Can be 'left', 'right' or 'reset' to move back
+    '''
+    if direction == 'left':
+        servo_lib.servo_turn_left()
+    elif direction == 'right':
+        servo_lib.servo_turn_right()
+    elif direction == 'reset':
+        servo_lib.servo_return_to_middle()
 
 def get_light() -> float:
     if system_status['Light Sensor'] == off:
@@ -311,6 +335,13 @@ if __name__ == '__main__':
     # sleep(1)
     # stop()
     # print("Done. stopping...")
+
+    move_servo('left')
+    sleep(1)
+    move_servo('right')
+    sleep(1)
+
+    
 
     while True:
         # print(get_light())

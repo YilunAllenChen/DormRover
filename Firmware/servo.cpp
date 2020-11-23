@@ -39,7 +39,7 @@ extern "C"
 		gpioPWM(servoPWM,turn);
 		sleep(0.1);
 	}
-	void servo_servo_right()
+	void servo_turn_right()
 	{
 		if(turn < 13)
 		{
