@@ -181,17 +181,19 @@ document.addEventListener('keyup', releaseKey);
 
 
 function pressKey(e) {
-   if(['KeyW', 'KeyA', 'KeyS', 'KeyD'].includes(e.code)) {
+   if(['KeyW', 'KeyA', 'KeyS', 'KeyD'].includes(e.code) && keys[e.code] == false) {
      keys[e.code] = true;
+     console.log("pressing " + e.code);
+     updateMotionControl();
    }
-   updateMotionControl();
 }
 
 function releaseKey(e) {
-  if(['KeyW', 'KeyA', 'KeyS', 'KeyD'].includes(e.code)) {
+  if(['KeyW', 'KeyA', 'KeyS', 'KeyD'].includes(e.code) && keys[e.code] == true) {
     keys[e.code] = false;
+    console.log("pressing " + e.code);
+    updateMotionControl();
   } 
-  updateMotionControl();
 }
 
 
