@@ -24,17 +24,15 @@ The project consists three major parts:
 # Project Setup
 
 ## Hardware Setup
---TODO--
+--TODO-- [Xi Li, Yida Wang]
 
 ## Software Setup
 1. Ready your Raspberry Pi (3 or above recommended)
 2. Pull this repository onto your Pi.
 3. Run `./setup` command. This only needs to be run once for installing necessary utilities.
     - After the first `setup` run, later on after you make modifications to the program you could just run `.build` to re-compile the program without reinstalling everything.
-5. Run `sudo python3 backend.py` to start the server
-6. In your Pi terminal use `ifconfig` to get your IP address
-7. Access the web GUI from your computer by going to the IP address with ":5000" appended.
-8. Use WASD to control the robot and have fun.
+5. Run `sudo python3 backend.py` to start the server.
+6. You should be able to see DORO's sensor system status as well as where DORO is serving its website. Access that url using your favorite browser.
 
 # Development Notes
 ### 2020.10.27
@@ -65,17 +63,9 @@ The project consists three major parts:
 - Created firmware for lidar sensors
 - Integrated lidar firmware and created corresponding wrapper functions and backend APIs
 
-
-# Useful Commands
-
-## Compile C++ code into a shared library:
-`gcc -shared -fPIC -lpigpio -lrt firmware.cpp -o firmware.so`
-Note:
-- `-shared -fPIC`: specify the firmware to be a shared library
-- `-lpigpio -lrt`: include libraries required by the firmware program
-
-## Web development
-Rename static html file into `index.html` and put it under `frontend/`.
+### 2020.11.15
+- Frontend v1.0 done. 
+- Added static files serving functionalities to backend.
 
 # References
 Want to learn more about the tech stack? Here are some useful links:

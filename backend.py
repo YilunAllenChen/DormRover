@@ -9,24 +9,34 @@ from firmware_wrapper import *
 from requests import get
 from time import sleep
 from random import choice
+import os
 import socket
-app = Flask(__name__)
+app = Flask(__name__, 
+    template_folder=os.path.abspath("./Frontend/"),
+    static_folder=os.path.abspath("./Frontend/static"))
 CORS(app)
 
 
 
 # Front page
 @app.route('/', methods=['GET'])
+@app.route('/index.html', methods=['GET'])
 def static_web_page():
     ''' 
     Serves the static web page
     '''
     return send_from_directory('Frontend/', 'index.html')
 
+@app.route('/about.html', methods=['GET'])
+def about():
+    return send_from_directory('Frontend/', 'about.html')
+
+@app.route('/description.html', methods=['GET'])
+def desc():
+    return send_from_directory('Frontend/', 'description.html')
 
 
 @app.route('/sensor_data/<sensor_name>', methods=['GET'])
-
 def get_sensor_data(sensor_name):
     '''
     Function should call the pybinding function to obtain sensor data, jsonify it and return it.
