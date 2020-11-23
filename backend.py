@@ -56,34 +56,22 @@ def get_sensor_data(sensor_name):
     return jsonify(data)
 
 
-motion = 'STOP'
 @app.route('/command', methods=['POST'])
 def command():
     '''
     Function should call the pybinding function to execute motor commands.
     '''
-    global motion
     key = request.json['key']
-    if key == 'w' and motion != 'w':
+    if key == 'w':
         go_straight()
-        print("motion is now " + motion)
-        motion = 'w'
-    elif key == 's' and motion != 's':
+    elif key == 's':
         go_backward()
-        motion = 's'
-        print("motion is now " + motion)
-    elif key == 'a' and motion != 'a':
+    elif key == 'a':
         turn_left()
-        motion = 'a'
-        print("motion is now " + motion)
-    elif key == 'd' and motion != 'd':
+    elif key == 'd':
         turn_right()
-        motion = 'd'
-        print("motion is now " + motion)
-    elif key == 'STOP' and motion != 'STOP':
-        stop()
-        motion = 'STOP'
-        print("motion is now " + motion)
+    sleep(1)
+    stop()
     return jsonify({
         "payload": "foobar"
     })
