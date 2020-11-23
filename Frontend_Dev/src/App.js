@@ -195,7 +195,7 @@ function releaseKey(e) {
 }
 
 
-async function send_key(key){
+async function send_command(key){
   //let ref = window.location.href //production
   let ref = "http://localhost:5000/"; //debug
   let response = await fetch(ref + 'command', {
@@ -212,10 +212,11 @@ async function send_key(key){
 
 function updateMotionControl(){
   console.log(keys);
-  if(keys.KeyW && !keys.KeyS) send_key('w');
-  if(keys.KeyS && !keys.KeyW) send_key('s');
-  if(keys.KeyA && !keys.KeyD) send_key('a');
-  if(keys.KeyD && !keys.KeyA) send_key('d');
+  if(keys.KeyW && !keys.KeyS) send_command('w');
+  if(keys.KeyS && !keys.KeyW) send_command('s');
+  if(keys.KeyA && !keys.KeyD) send_command('a');
+  if(keys.KeyD && !keys.KeyA) send_command('d');
+  if(!(keys.KeyA || keys.KeyD || keys.KeyS || keys.KeyW)) send_command("STOP");
 }
 
 
