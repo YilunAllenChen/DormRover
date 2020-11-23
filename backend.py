@@ -66,17 +66,14 @@ def command():
     key = request.json['key']
     if key == 'w':
         go_straight()
-        sleep(1)
     elif key == 's':
         go_backward()
-        sleep(1)
     elif key == 'a':
         turn_left()
-        sleep(1)
     elif key == 'd':
         turn_right()
-        sleep(1)
-    stop()
+    elif key == 'STOP':
+        stop()
     return jsonify({
         "payload": "foobar"
     })
