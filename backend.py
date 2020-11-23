@@ -66,19 +66,24 @@ def command():
     key = request.json['key']
     if key == 'w' and motion != 'w':
         go_straight()
+        print("motion is now " + motion)
         motion = 'w'
     elif key == 's' and motion != 's':
         go_backward()
         motion = 's'
+        print("motion is now " + motion)
     elif key == 'a' and motion != 'a':
         turn_left()
         motion = 'a'
+        print("motion is now " + motion)
     elif key == 'd' and motion != 'd':
         turn_right()
         motion = 'd'
+        print("motion is now " + motion)
     elif key == 'STOP' and motion != 'STOP':
         stop()
         motion = 'STOP'
+        print("motion is now " + motion)
     return jsonify({
         "payload": "foobar"
     })
