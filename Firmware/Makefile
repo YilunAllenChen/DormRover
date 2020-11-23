@@ -33,5 +33,8 @@ VL53L0X_C_Wrapper.o: VL53L0X_C_Wrapper.cpp
 lidar.so: VL53L0X_C_Wrapper.o VL53L0X.o
 	$(CC) -Wall -O2 -shared VL53L0X.o VL53L0X_C_Wrapper.o -o lidar.so
 
+servo.so: servo.cpp
+	$(CC) -Wall -O2 -shared -lpigpio -lrt servo.cpp -o servo.so
+
 clean:
 	rm -f *.o *.so
