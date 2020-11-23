@@ -6,7 +6,7 @@
 #include <unistd.h>
 #define light_sensor_read 17
 
-
+/*
 extern "C"
 {
 	void initialize_light_sensor()
@@ -31,5 +31,24 @@ extern "C"
 		}
 	}
 }
-
-
+*/
+int main()
+{	
+	if (gpioInitialise() < 0)
+		{
+			return 0;
+		};
+	gpioSetMode(light_sensor_read, PI_INPUT);
+	while(1){
+	if(gpioRead(light_sensor_read))
+	{
+		printf("What Fuck");
+		
+	}
+	else
+	{
+		printf("Nothing");
+	}
+	}
+	
+}
