@@ -196,7 +196,9 @@ function releaseKey(e) {
 
 
 async function send_key(key){
-  let response = await fetch(window.location.href + 'command', {
+  //let ref = window.location.href //production
+  let ref = "http://localhost:5000/"; //debug
+  let response = await fetch(ref + 'command', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
