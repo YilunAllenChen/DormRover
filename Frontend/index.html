@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     
     <title>DormRover</title>
-    <link rel="stylesheet" href="css/main.css">  
+    <link rel= "stylesheet" type= "text/css" href= "../static/styles/main.css"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}"/>
+    <script src="js/main.js"></script>
 </head>
 <body>
     <div class="overlay" id = "overlay">
@@ -32,14 +34,29 @@
     </div>
 
     <div class="rover-control">
-        <section class = "camera_n_control">           
+        <section class = "camera_n_control">
+            
 
-            <img src="images/placeholder.png" alt="Live Video Feed">
+            <button class='button' id='forward' >Forward</button>
+            <button class='button' id='backward' >Reverse</button>
+            <button class='button' id='left' >Left</button>
+            <button class='button' id='right' >Right</button>
+            <! -- <img src="images/placeholder.png" width="100%"> -->
+            
 
-            <input type="button" value = "Forward">
-            <input type="button" value = "Reverse">            
-            <input type="button" value = "Left">
-            <input type="button" value = "Right">
+            <img src="/video_feed" width="100%">
+
+            <script>forward.onclick = async (e) => {let res = await send_key('w');}
+  
+
+                backward.onclick = async (e) => {let res = await send_key('s');}
+              
+                left.onclick = async (e) => {let res = await send_key('a');}
+              
+                right.onclick = async (e) => {let res = await send_key('d');}
+              
+                //send keyboard event
+                document.onkeydown = async (e) => {let res = await send_key(e);}</script>
 
         </section>
 
@@ -55,7 +72,8 @@
         <h2>Speed config</h2>
         <div class="readspeed">
             <form action="">
-                <p class="currentspeed" data-currentspeed="10">Currentspeed is<span class="readspeed"></span></p>               
+                <p class="currentspeed" data-currentspeed="10">Current Speed Metrics:<span class="readspeed"></span></p>
+                <iframe src="/sensor_data/imu" width="150" height="60"></iframe>                      
             </form>
         </div>
         <div class="setspeed">
@@ -69,7 +87,16 @@
         <h2>Temperature</h2>
         <div class="readtemp">
             <form action="">
-                <p class="currenttemp" data-currenttemp="10">Currenttemp is<span class="readtemp"></span></p>               
+                <p class="currenttemp" data-currenttemp="10">Currenttemp is<span class="readtemp"></span></p>
+                <iframe src="/sensor_data/temp" width="150" height="60"></iframe> 
+            </form>
+        </div>
+
+        <h2>Lidar</h2>
+        <div class="readlidar">
+            <form action="">
+                <p class="currentlidar" data-currentlidar="10">Lidar Distence Reading is<span class="readtemp"></span></p>
+                <iframe src="/sensor_data/lidar" width="150" height="60"></iframe> 
             </form>
         </div>
 

@@ -4,22 +4,36 @@ Backend of the DormRover project. Powered by Flask and python/C++ binding utilit
 
 
 from flask import Flask, jsonify, request, send_from_directory, Response
+from flask_cors import CORS
 from firmware_wrapper import *
 from requests import get
 from time import sleep
 from random import choice
+import os
 import socket
-app = Flask(__name__)
+app = Flask(__name__, 
+    template_folder=os.path.abspath("./Frontend/"),
+    static_folder=os.path.abspath("./Frontend/static"))
+CORS(app)
+
 
 
 # Front page
 @app.route('/', methods=['GET'])
+@app.route('/index.html', methods=['GET'])
 def static_web_page():
     ''' 
     Serves the static web page
     '''
     return send_from_directory('Frontend/', 'index.html')
 
+@app.route('/about.html', methods=['GET'])
+def about():
+    return send_from_directory('Frontend/', 'about.html')
+
+@app.route('/description.html', methods=['GET'])
+def desc():
+    return send_from_directory('Frontend/', 'description.html')
 
 
 @app.route('/sensor_data/<sensor_name>', methods=['GET'])
@@ -42,27 +56,29 @@ def get_sensor_data(sensor_name):
     return jsonify(data)
 
 
+motion = 'STOP'
 @app.route('/command', methods=['POST'])
 def command():
     '''
     Function should call the pybinding function to execute motor commands.
     '''
-    print('request data', request.json)
-
+    global motion
     key = request.json['key']
-    if key == 'w':
+    if key == 'w' and motion != 'w':
         go_straight()
-        sleep(1)
-    elif key == 's':
+        motion = 'w'
+    elif key == 's' and motion != 's':
         go_backward()
-        sleep(1)
-    elif key == 'a':
+        motion = 's'
+    elif key == 'a' and motion != 'a':
         turn_left()
-        sleep(1)
-    elif key == 'd':
+        motion = 'a'
+    elif key == 'd' and motion != 'd':
         turn_right()
-        sleep(1)
-    stop()
+        motion = 'd'
+    elif key == 'STOP' and motion != 'STOP':
+        stop()
+        motion = 'STOP'
     return jsonify({
         "payload": "foobar"
     })

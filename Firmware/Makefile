@@ -2,13 +2,13 @@ CC = g++
 CFLAGS = -O2 -g
 
 .PHONY: all
-all: IMU.so motion_control.so light_sensor.so lidar.so
+all: IMU.so motion_control.so light_sensor.so lidar.so firmware.so
 
 LSM9DS1.o: LSM9DS1.cpp
 	$(CC) -Wall -O2 -fPIC -c -lwiringPi LSM9DS1.cpp -o LSM9DS1.o
 
-firmware.o: firmware_test.cpp
-	$(CC) -Wall -O2 -fPIC -lwiringPi -lpigpio -lrt *.cpp -o firmware.o
+firmware.so: firmware_test.cpp
+	$(CC) -Wall -O2 -fPIC -lwiringPi -lpigpio -lrt LSM9DS1.cpp motion_control.cpp VL53L0X.cpp firmware_test.cpp -o firmware.so
 
 VL53L0X.o: VL53L0X.cpp
 	$(CC) -Wall -O2 -fPIC -c VL53L0X.cpp -o VL53L0X.o

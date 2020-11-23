@@ -176,6 +176,8 @@ def get_IMU() -> dict:
             'mz': 1.1
         }
     '''
+    if system_status['IMU'] == off:
+        return {"ERROR": "IMU sensor system is offline"}
     try:
         IMU_lib.LSM9DS1_readAccel(imu)
         IMU_lib.LSM9DS1_readMag(imu)
@@ -210,6 +212,8 @@ def get_temp() -> float:
     '''
     Function uses pre-built c++ libraries and obtain temperature
     '''
+    if system_status['IMU'] == off:
+        return {"ERROR": "Temperature sensor system is offline"}
     try:
         return (IMU_lib.LSM9DS1_readTemp(imu) / 16 + 25)
     except Exception as e:
@@ -219,7 +223,12 @@ def get_lidar() -> int:
     '''
     Function uses pre-built c++ libraries to obtain distance to nearby objects with its lidar sensor.
     '''
-    return lidar_lib.lidar_get_distance(lidar)
+    if system_status['Lidar'] == off:
+        return {"ERROR": "Lidar sensor system is offline"}
+    try:
+        return lidar_lib.lidar_get_distance(lidar)
+    except Exception as e:
+        return {"ERROR": str(e)}
 
 def set_speed(speed: int) -> None:
     '''
@@ -227,6 +236,8 @@ def set_speed(speed: int) -> None:
 
     :param speed: The target speed, from 0 to 100.
     '''
+    if system_status['Motion Control'] == off:
+        print("ERROR: Motion control system is offline")
     motion_control_lib.set_speed(speed)
 
 
@@ -234,6 +245,8 @@ def go_straight() -> None:
     '''
     Function uses pre-built c++ libraries and let both motors go forward.
     '''
+    if system_status['Motion Control'] == off:
+        print("ERROR: Motion control system is offline")
     motion_control_lib.go_straight()
 
 
@@ -241,6 +254,8 @@ def go_backward() -> None:
     '''
     Function uses pre-built c++ libraries and let both motors go backward.
     '''
+    if system_status['Motion Control'] == off:
+        print("ERROR: Motion control system is offline")
     motion_control_lib.go_backward()
 
 
@@ -248,6 +263,8 @@ def turn_left() -> None:
     '''
     Function uses pre-built c++ libraries and let the robot turn left.
     '''
+    if system_status['Motion Control'] == off:
+        print("ERROR: Motion control system is offline")
     motion_control_lib.turn_left()
 
 
@@ -255,6 +272,8 @@ def turn_right() -> None:
     '''
     Function uses pre-built c++ libraries and let the robot turn right.
     '''
+    if system_status['Motion Control'] == off:
+        print("ERROR: Motion control system is offline")
     motion_control_lib.turn_right()
 
 
@@ -262,13 +281,16 @@ def stop() -> None:
     '''
     Function uses pre-built c++ libraries and let the robot go to a hard stop.
     '''
+    if system_status['Motion Control'] == off:
+        print("ERROR: Motion control system is offline")
     motion_control_lib.stop()
 
 
 def get_light() -> float:
+    if system_status['Light Sensor'] == off:
+        print("ERROR: Light Sensor system is offline")
     try:
         res = light_sensor_lib.get_light()
-        print("Light sensor: {}".format(res))
         return res
     except:
         return -9999
@@ -294,3 +316,4 @@ if __name__ == '__main__':
         # print(get_light())
         print('imu', get_IMU())
         print('temp', get_temp())
+        print("light: ", get_light())

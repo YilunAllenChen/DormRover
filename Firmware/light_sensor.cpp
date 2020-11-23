@@ -23,11 +23,11 @@ extern "C"
 		// set readIn pin as input
 		if (gpioRead(light_sensor_read))
 		{
-			return 1;
+			return 1.0f;
 		}
 		else 
 		{
-			return 0;
+			return 0.0f;
 		}
 	}
 }
