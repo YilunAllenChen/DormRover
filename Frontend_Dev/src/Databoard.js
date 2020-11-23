@@ -47,7 +47,6 @@ export default class Databoard extends Component {
       this.state.sensor_data['IMU']['timestamp'] = Date.now();
       this.state.sensor_data['IMU']['reading'] = JSON.stringify(json);
     }));
-    this.setState({});
 
   }
 

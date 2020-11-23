@@ -116,7 +116,6 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    console.log(this.state.option);
     const {classes} = this.props;
     return (
       <div className={classes.root}>
@@ -166,59 +165,6 @@ class Dashboard extends React.Component {
       </div>
     );
   }
-}
-
-
-let keys = {
-  KeyW: false,
-  KeyA: false,
-  KeyS: false,
-  KeyD: false
-}
-
-document.addEventListener('keydown', pressKey);
-document.addEventListener('keyup', releaseKey);
-
-
-function pressKey(e) {
-   if(['KeyW', 'KeyA', 'KeyS', 'KeyD'].includes(e.code) && keys[e.code] == false) {
-     keys[e.code] = true;
-     console.log("pressing " + e.code);
-     updateMotionControl();
-   }
-}
-
-function releaseKey(e) {
-  if(['KeyW', 'KeyA', 'KeyS', 'KeyD'].includes(e.code) && keys[e.code] == true) {
-    keys[e.code] = false;
-    console.log("pressing " + e.code);
-    updateMotionControl();
-  } 
-}
-
-
-async function send_command(key){
-  //let ref = window.location.href //production
-  let ref = "http://localhost:5000/"; //debug
-  let response = await fetch(ref + 'command', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  "key" : key
-                })
-        })
-  return response
-}
-
-function updateMotionControl(){
-  console.log(keys);
-  if(keys.KeyW && !keys.KeyS) send_command('w');
-  if(keys.KeyS && !keys.KeyW) send_command('s');
-  if(keys.KeyA && !keys.KeyD) send_command('a');
-  if(keys.KeyD && !keys.KeyA) send_command('d');
-  if(!(keys.KeyA || keys.KeyD || keys.KeyS || keys.KeyW)) send_command("STOP");
 }
 
 
