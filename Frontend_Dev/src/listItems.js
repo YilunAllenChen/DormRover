@@ -10,55 +10,51 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
-export const mainListItems = (
-  <div>
-    <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Our Team" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Status" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Development Notes" />
-    </ListItem>
-  </div>
-);
+export default class MainListItems extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-export const secondaryListItems = (
-  <div>
-    {/* <ListSubheader inset>Saved reports</ListSubheader>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItem> */}
-  </div>
-);
+  state = {
+    'activeItem': "Dashboard"
+  }
+
+  handleItemClick = (name) => {
+    this.setState({ activeItem: name });
+    this.props.onOptionChange({ newOption: name });
+  };
+
+
+  render() {
+    return (
+    <div>
+      <ListItem button onClick={() => this.handleItemClick("Control_Panel")}>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItem>
+      <ListItem button onClick={() => this.handleItemClick("Team")}>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Team" />
+      </ListItem>
+      <ListItem button onClick={() => this.handleItemClick("Status")}>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Status" />
+      </ListItem>
+      <ListItem button onClick={() => this.handleItemClick("Notes")}>
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="Notes" />
+      </ListItem>
+    </div>
+    );
+  }
+}
+
+export function secondaryListItems(){return <div />;}
