@@ -44,14 +44,14 @@ extern "C"
 	
 	void turn_left()
 	{
-		set_left(-speed);
-		set_right(speed);
+		set_left(speed);
+		set_right(-speed);
 	}
 	
 	void turn_right()
 	{
-		set_left(speed);
-		set_right(-speed);
+		set_left(-speed);
+		set_right(+speed);
 	}
 
 	void stop()
