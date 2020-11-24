@@ -22,14 +22,14 @@ CORS(app)
 
 
 # Front page
-@app.route('/index.html', methods=['GET'])
+#@app.route('/index.html', methods=['GET'])
 @app.route('/', methods=['GET'])
 def static_web_page():
     ''' 
     Serves the static web page
     '''
     return send_from_directory('Frontend_Dev/build/','index.html')
-    return send_from_directory('Frontend/', 'index.html')
+#    return send_from_directory('Frontend/', 'index.html')
 
 
 @app.route('/about.html', methods=['GET'])

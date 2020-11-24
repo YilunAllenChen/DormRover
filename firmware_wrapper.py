@@ -128,7 +128,7 @@ except:
 # motion control library
 try:
     motion_control_lib.initialize_pins()
-    motion_control_lib.set_speed(100)
+    motion_control_lib.set_speed(50)
     system_status['Motion Control'] = on
 except Exception as e:
     print("Failed to initialize motion control utilities: {} \nDORO will not be able to react to your command.".format(e))
