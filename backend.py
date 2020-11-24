@@ -45,14 +45,17 @@ def get_sensor_data(sensor_name):
     data = {
         "placeholder": "foobar"
     }
-    if sensor_name == "imu":
-        data = get_IMU()
-    elif sensor_name == 'temp':
-        data = get_temp()
-    elif sensor_name == 'lidar':
-        data = get_lidar()
-    else:
-        data = {"ERROR": "Not supported or not implemented"}
+    try:
+        if sensor_name == "imu":
+            data = get_IMU()
+        elif sensor_name == 'temp':
+            data = get_temp()
+        elif sensor_name == 'lidar':
+            data = get_lidar()
+        else:
+            data = {"ERROR": "Not supported or not implemented"}
+    except Exception as e:
+        data = {"ERROR": "Error occurred obtaining data." + str(e)}
     return jsonify(data)
 
 
