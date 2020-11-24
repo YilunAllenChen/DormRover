@@ -7,7 +7,8 @@ import Tips from './Tips';
 import Databoard from './Databoard';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
-
+let ref = "http://172.20.10.13:5000/" // debug
+// let ref = window.location.href; // production
 
 const classes = (theme) => ({
   root: {
@@ -51,7 +52,7 @@ class Control_Panel extends React.Component {
           {/* Chart */}
           <Grid item xs={12} md={8} lg={9}>
             <Paper style={{"display": "flex", "padding": 20, "overflow": "auto", "flexDirection": "column"}}>
-              <img src="http://localhost:5000/video_feed" alt="video_feed" width={600}></img>
+              <img src="video_feed" alt="video_feed" width={600}></img>
             </Paper>
           </Grid>
           {/* Recent Tips */}

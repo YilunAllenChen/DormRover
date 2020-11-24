@@ -8,7 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 
-
+let ref = "http://172.20.10.13:5000/" //debug
+// let ref = window.location.href // production
 
 export default class Databoard extends Component {
 
@@ -33,17 +34,17 @@ export default class Databoard extends Component {
   getData() {
     let self = this;
     let _json;
-    fetch("http://localhost:5000/sensor_data/temp").then(res => res.json().then(json => {
+    fetch(ref + "sensor_data/temp").then(res => res.json().then(json => {
       this.state.sensor_data['temp']['timestamp'] = Date.now();
       this.state.sensor_data['temp']['reading'] = json;
     }));
 
-    fetch("http://localhost:5000/sensor_data/lidar").then(res => res.json().then(json => {
+    fetch(ref + "sensor_data/lidar").then(res => res.json().then(json => {
       this.state.sensor_data['lidar']['timestamp'] = Date.now();
       this.state.sensor_data['lidar']['reading'] = JSON.stringify(json);
     }));
 
-    fetch("http://localhost:5000/sensor_data/imu").then(res => res.json().then(json => {
+    fetch(ref + "sensor_data/imu").then(res => res.json().then(json => {
       this.state.sensor_data['IMU']['timestamp'] = Date.now();
       this.state.sensor_data['IMU']['reading'] = JSON.stringify(json);
     }));
