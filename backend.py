@@ -71,19 +71,31 @@ def command():
     '''
     key = request.json['key']
     if key == 'w':
-        for i in range(100):
+        for i in range(70):
             set_speed(i)
             go_straight()
             sleep(0.01)
+        for i in range(10):
+            set_speed(70-7*i)
+            go_straight()
+            sleep(0.01)
     elif key == 's':
-        go_backward()
-        sleep(1)
+        for i in range(70):
+            set_speed(i)
+            go_backward()
+            sleep(0.01)
+        for i in range(10):
+            set_speed(70-7*i)
+            go_backward()
+            sleep(0.01)
     elif key == 'a':
+        set_speed(20)
         turn_left()
-        sleep(0.2)
+        sleep(0.3)
     elif key == 'd':
+        set_speed(20)
         turn_right()
-        sleep(0.2)
+        sleep(0.3)
     stop()
     return jsonify({
         "payload": "foobar"
