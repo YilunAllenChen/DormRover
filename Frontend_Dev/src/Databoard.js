@@ -35,16 +35,19 @@ export default class Databoard extends Component {
     let self = this;
     let _json;
     fetch(ref + "sensor_data/temp").then(res => res.json().then(json => {
+      console.log("temp data: " + json);
       this.state.sensor_data['temp']['timestamp'] = Date.now();
       this.state.sensor_data['temp']['reading'] = json;
     }));
 
     fetch(ref + "sensor_data/lidar").then(res => res.json().then(json => {
+      console.log("lidar data:" + json);
       this.state.sensor_data['lidar']['timestamp'] = Date.now();
       this.state.sensor_data['lidar']['reading'] = JSON.stringify(json);
     }));
 
     fetch(ref + "sensor_data/imu").then(res => res.json().then(json => {
+      console.log("imu data: " + json);
       this.state.sensor_data['IMU']['timestamp'] = Date.now();
       this.state.sensor_data['IMU']['reading'] = JSON.stringify(json);
     }));
@@ -61,7 +64,7 @@ export default class Databoard extends Component {
     // data right away
     this.getData();
     // Now we need to make it run at a specified interval
-    setInterval(this.getData, 1000); // runs every 5 seconds.
+    setInterval(this.getData, 5000); // runs every 5 seconds.
   }
 
   render() {
