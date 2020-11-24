@@ -8,8 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 
-let ref = "http://172.20.10.13:5000/" //debug
-// let ref = window.location.href // production
+// let ref = "http://172.20.10.13:5000/" //debug
+let ref = window.location.href // production
 
 export default class Databoard extends Component {
 

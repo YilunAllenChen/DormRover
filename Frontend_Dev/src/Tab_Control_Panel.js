@@ -7,8 +7,8 @@ import Tips from './Tips';
 import Databoard from './Databoard';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
-let ref = "http://172.20.10.13:5000/" // debug
-// let ref = window.location.href; // production
+// let ref = "http://172.20.10.13:5000/" // debug
+let ref = window.location.href; // production
 
 const classes = (theme) => ({
   root: {
