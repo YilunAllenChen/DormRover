@@ -15,14 +15,15 @@ import socket
 #    template_folder=os.path.abspath("./Frontend/"),
 #    static_folder=os.path.abspath("./Frontend/static"))
 app = Flask(__name__,
+    template_folder=os.path.abspath("./Frontend_Dev/build/"),
     static_folder=os.path.abspath("./Frontend_Dev/build/static"))
 CORS(app)
 
 
 
 # Front page
-@app.route('/', methods=['GET'])
 @app.route('/index.html', methods=['GET'])
+@app.route('/', methods=['GET'])
 def static_web_page():
     ''' 
     Serves the static web page
