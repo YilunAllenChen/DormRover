@@ -11,9 +11,11 @@ from time import sleep
 from random import choice
 import os
 import socket
-app = Flask(__name__, 
-    template_folder=os.path.abspath("./Frontend/"),
-    static_folder=os.path.abspath("./Frontend/static"))
+#app = Flask(__name__, 
+#    template_folder=os.path.abspath("./Frontend/"),
+#    static_folder=os.path.abspath("./Frontend/static"))
+app = Flask(__name__,
+    static_folder=os.path.abspath("./Frontend_Dev/build/static"))
 CORS(app)
 
 
@@ -25,7 +27,9 @@ def static_web_page():
     ''' 
     Serves the static web page
     '''
+    return send_from_directory('Frontend_Dev/build/','index.html')
     return send_from_directory('Frontend/', 'index.html')
+
 
 @app.route('/about.html', methods=['GET'])
 def about():
