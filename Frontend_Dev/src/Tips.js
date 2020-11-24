@@ -45,8 +45,8 @@ export default function Tipss() {
 
 }
 
-let ref = 'http://localhost:5000/' // debug
-// let ref = window.location.href //production
+// let ref = 'http://localhost:5000/' // debug
+let ref = window.location.href //production
 
 
 
