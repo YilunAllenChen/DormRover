@@ -26,7 +26,7 @@ The project consists three major parts:
 ## Hardware Setup
 
 ![Image of Yaktocat](https://www.raspberrypi-spy.co.uk/wp-content/uploads/2012/06/Raspberry-Pi-GPIO-Header-with-Photo-702x336.png)   
-Figure 1. Raspberry Pi pinout
+Figure 1. Raspberry Pi pinout   
 The pin number discussed in the following section will be referred to the pinout picture above.Please read the number labelled as GPIOxx rather than number circled in the middle   
 
 #### Motion Control
