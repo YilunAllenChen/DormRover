@@ -38,9 +38,9 @@ const classes = (theme) => ({
 
 class Team extends React.Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
-  }
+  }*/
 
   render() {
     const { classes } = this.props;
