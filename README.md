@@ -24,7 +24,10 @@ The project consists three major parts:
 # Project Setup
 
 ## Hardware Setup
+
+![Image of Yaktocat](https://www.raspberrypi-spy.co.uk/wp-content/uploads/2012/06/Raspberry-Pi-GPIO-Header-with-Photo-702x336.png)   
 #### Motion Control
+
 #### Servo
 #### IMU
 #### lidar sensor
@@ -72,7 +75,7 @@ The project consists three major parts:
 - Added static files serving functionalities to backend.
 
 ### 2020.11.23
-- Created firmware for servos
+- Created firmware for servos   
 - Integrated servos firmware and created corresponding wrapper functions and backend APIs
 # References
 Want to learn more about the tech stack? Here are some useful links:

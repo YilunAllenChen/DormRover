@@ -76,23 +76,13 @@ def command():
     '''
     key = request.json['key']
     if key == 'w':
-        for i in range(70):
-            set_speed(i)
-            go_straight()
-            sleep(0.01)
-        for i in range(10):
-            set_speed(70-7*i)
-            go_straight()
-            sleep(0.01)
+        set_speed(100)
+        go_straight()
+        sleep(0.7)
     elif key == 's':
-        for i in range(70):
-            set_speed(i)
-            go_backward()
-            sleep(0.01)
-        for i in range(10):
-            set_speed(70-7*i)
-            go_backward()
-            sleep(0.01)
+        set_speed(100)
+        go_backward()
+        sleep(0.7)
     elif key == 'a':
         set_speed(20)
         turn_left()
