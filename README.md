@@ -72,8 +72,8 @@ The project consists three major parts:
 - Added static files serving functionalities to backend.
 
 ### 2020.11.23
--Created firmware for servos
--Integrated servp firmware and created corresponding wrapper functions and backend APIs
+- Created firmware for servos
+- Integrated servos firmware and created corresponding wrapper functions and backend APIs
 # References
 Want to learn more about the tech stack? Here are some useful links:
 
