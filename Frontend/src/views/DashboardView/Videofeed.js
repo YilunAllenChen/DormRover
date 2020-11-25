@@ -46,7 +46,7 @@ const Video_feed = ({ className, ...rest }) => {
           height={400}
           position="relative"
         >        
-        <img src="video_feed" alt="video_feed" width={600}></img>   
+        <img src="./video_feed" alt="video_feed" width={600}></img>   
         </Box>
       </CardContent>
       <Divider />      
