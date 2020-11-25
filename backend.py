@@ -37,6 +37,7 @@ CORS(app)
 # Front page
 @app.route('/index.html', methods=['GET'])
 @app.route('/', methods=['GET'])
+@app.route('/app/dashboard', methods=['GET'])
 def static_web_page():
     ''' 
     Serves the static web page
