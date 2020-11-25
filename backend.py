@@ -11,35 +11,40 @@ from time import sleep
 from random import choice
 import os
 import socket
-#app = Flask(__name__, 
-#    template_folder=os.path.abspath("./Frontend/"),
-#    static_folder=os.path.abspath("./Frontend/static"))
-app = Flask(__name__,
-    template_folder=os.path.abspath("./Frontend_Dev/build/"),
-    static_folder=os.path.abspath("./Frontend_Dev/build/static"))
+import sys
+
+
+DEBUG_MODE = False
+
+for i in range(0,len(sys.argv)): #reads input whether we are running the robot version or not
+    if (sys.argv[i] == "-debug"):
+        DEBUG_MODE = True
+print("Using [ {} ] build".format("\33[92mDEBUG\33[0m" if DEBUG_MODE else "\33[94mPRODUCTION\33[0m"))
+
+if DEBUG_MODE:
+    app = Flask(__name__, 
+        template_folder=os.path.abspath("./Frontend/"),
+        static_folder=os.path.abspath("./Frontend/static"))
+else:
+    app = Flask(__name__,
+        template_folder=os.path.abspath("./Frontend/build/"),
+        static_folder=os.path.abspath("./Frontend/build/static"))
+
 CORS(app)
 
 
 
 # Front page
-#@app.route('/index.html', methods=['GET'])
+@app.route('/index.html', methods=['GET'])
 @app.route('/', methods=['GET'])
 def static_web_page():
     ''' 
     Serves the static web page
     '''
-    return send_from_directory('Frontend_Dev/build/','index.html')
-#    return send_from_directory('Frontend/', 'index.html')
-
-
-@app.route('/about.html', methods=['GET'])
-def about():
-    return send_from_directory('Frontend/', 'about.html')
-
-@app.route('/description.html', methods=['GET'])
-def desc():
-    return send_from_directory('Frontend/', 'description.html')
-
+    if DEBUG_MODE: 
+        return send_from_directory('Frontend/', 'index.html')
+    else:
+        return send_from_directory('Frontend/build/','index.html')
 
 @app.route('/sensor_data/<sensor_name>', methods=['GET'])
 def get_sensor_data(sensor_name):

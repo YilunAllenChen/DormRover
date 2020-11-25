@@ -15,4 +15,7 @@ sudo make install
 cd ..
 rm -rf pigpio_master
 
+cd Frontend
+npm install
+
 bash build.sh
