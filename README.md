@@ -24,6 +24,10 @@ The project consists three major parts:
 # Project Setup
 
 ## Hardware Setup
+#### Motion Control
+#### Servo
+#### IMU
+#### lidar sensor
 --TODO-- [Xi Li, Yida Wang]
 
 ## Software Setup
@@ -67,6 +71,9 @@ The project consists three major parts:
 - Frontend v1.0 done. 
 - Added static files serving functionalities to backend.
 
+### 2020.11.23
+-Created firmware for servos
+-Integrated servp firmware and created corresponding wrapper functions and backend APIs
 # References
 Want to learn more about the tech stack? Here are some useful links:
 
