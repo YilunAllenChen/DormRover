@@ -34,8 +34,6 @@ export default class Databoard extends Component {
   };
 
   getData() {
-    let self = this;
-    let _json;
     fetch(ref + "sensor_data/temp").then(res => res.json().then(json => {
       console.log("temp data: " + json);
       this.state.sensor_data['temp']['timestamp'] = Date.now();

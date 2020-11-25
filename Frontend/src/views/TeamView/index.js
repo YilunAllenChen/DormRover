@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Link from '@material-ui/core/Link'
 
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
 
@@ -37,8 +36,6 @@ const classes = (theme) => ({
   },
 });
 
-const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
 class Team extends React.Component {
 
   constructor(props) {
@@ -52,10 +49,7 @@ class Team extends React.Component {
     let team_members = [
       {
         name: "Allen Chen",
-        desc: "4th year computer engineering student with a deep passion for robotics. \n\
-              Upcoming SWE @ DRW. Ex-intern @ Uber Advanced Technology Group and Volkswagen AG. \
-              Undergraduate research assistant at Georgia Tech Robotarium and LIDAR lab.\
-              ",
+        desc: "4th year computer engineering student with a deep passion for robotics. Upcoming SWE @ DRW. Ex-intern @ Uber Advanced Technology Group and Volkswagen AG. Undergraduate research assistant at Georgia Tech Robotarium and LIDAR lab. ",
         contact: {
           "LinkedIn": "https://www.linkedin.com/in/yilun-allen-chen-572b71141/"
         }
@@ -74,7 +68,7 @@ class Team extends React.Component {
         }
       }, {
         name: "Zhenjie Chu",
-        desc: "MS ECE student with four years of experience working as Lead Electrical Engineer in the automotive supply manafacturing industry.  \n Led and managed a multi-discipline engineer team to design and build automation solutions such as ABB robotic system to meet critical automotive production requirements \n Currently shifting focus more towards software and embedded systems", 
+        desc: "MS ECE student with four years of experience working as Lead Electrical Engineer in the automotive supply manafacturing industry. Led and managed a multi-discipline engineer team to design and build automation solutions such as ABB robotic system to meet critical automotive production requirements. Currently shifting focus more towards software and embedded systems.", 
         contact: {
           "LinkedIn": "https://www.linkedin.com/in/zhenjie-chu-1139a882/"
         }

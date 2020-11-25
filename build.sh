@@ -4,3 +4,7 @@
 cd Firmware
 make
 cd ..
+
+cd Frontend
+npm run-script build
+cd ..

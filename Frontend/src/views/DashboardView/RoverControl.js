@@ -13,14 +13,10 @@ import {
   colors,
   makeStyles
 } from '@material-ui/core';
-//import Container from 'react-bootstrap/Container';
-//import Row from 'react-bootstrap/Row';
-//import Col from 'react-bootstrap/Col';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-//import { Button, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +43,7 @@ const Controls = ({ className, ...rest }) => {
     <Card
       className={clsx(classes.root, className)}
       {...rest}
+      style={{'margin':'auto'}}
     >
       <CardContent>
         <Grid
@@ -54,45 +51,46 @@ const Controls = ({ className, ...rest }) => {
           justify="space-between"
           spacing={3}
         >
-          <Grid item>
+          <Grid style={{'margin':'auto'}} item>
             <Typography
               color="textSecondary"
               gutterBottom
               variant="h6"
+              style={{'textAlign':'center'}}
             >
               Rover Control
             </Typography>
-              <React.Fragment>
-                <Grid style={{ padding: 30}}>
-                  <Button onClick={() => send_key('w')}>
+            <React.Fragment>
+              <Grid style={{ padding: 30 }}>
+                <Button onClick={() => send_key('w')}>
                   <ArrowUpwardIcon />
-                  </Button>
-                </Grid>
-                <Grid style={{'margin': 'auto'}}>
-                  <Button onClick={() => send_key('a')}>
+                </Button>
+              </Grid>
+              <Grid style={{ 'margin': 'auto' }}>
+                <Button onClick={() => send_key('a')}>
                   <ArrowBackIcon />
-                  </Button>
-                
-                
-                  <Button onClick={() => send_key('d')}>
+                </Button>
+
+
+                <Button onClick={() => send_key('d')}>
                   <ArrowForwardIcon />
-                  </Button>
-                </Grid>
-                <Grid style={{padding: 30}}>
-                  <Button onClick={() => send_key('s')}>
+                </Button>
+              </Grid>
+              <Grid style={{ padding: 30 }}>
+                <Button onClick={() => send_key('s')}>
                   <ArrowDownwardIcon />
-                  </Button>
-                </Grid>
-              </React.Fragment>
+                </Button>
+              </Grid>
+            </React.Fragment>
           </Grid>
-          
+
         </Grid>
         <Box
           mt={2}
           display="flex"
           alignItems="center"
         >
-          
+
         </Box>
       </CardContent>
     </Card>
@@ -106,16 +104,16 @@ Controls.propTypes = {
 // let ref = 'http://localhost:5000/' // debug
 let ref = window.location.href //production
 
-async function send_key(key){
+async function send_key(key) {
   let response = await fetch(ref + 'command', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  "key" : key
-                })
-        })
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "key": key
+    })
+  })
   return response
 }
 

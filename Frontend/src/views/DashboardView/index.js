@@ -34,18 +34,20 @@ const Dashboard = () => {
         >
           <Grid
             item
-            lg={3}
-            sm={6}
-            xl={3}
+            xl={4}
+            lg={4}
+            md={3}
+            sm={3}
             xs={12}
           >
             <RoverControl />
           </Grid>
           <Grid
             item
+            xl={8}
             lg={8}
-            md={12}
-            xl={9}
+            md={9}
+            sm={9}
             xs={12}
           >
             <Videofeed />
