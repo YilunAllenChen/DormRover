@@ -29,12 +29,20 @@ The project consists three major parts:
 Figure 1. Raspberry Pi pinout   
 The pin number discussed in the following section will be referred to the pinout picture above.Please read the number labelled as GPIOxx rather than number circled in the middle   
 
-#### Motion Control
+### Motion Control
+#### Components
+2 motors and Dual H-bridge (TB6612)
+![Image of Yaktocat](https://i2.wp.com/dronebotworkshop.com/wp-content/uploads/2019/12/TB6612FNG-pinout.jpeg?w=768&ssl=1)   
+Figure 2. Dual H-briage   
+![Image of Yaktocat](https://opencircuit.shop/resources/content/4d31362984068/crop/1900-950/DC-Geared-Motor.webp)   
+Figure 3. small Motor   
+
+
 Motion Control take 6 pins. Among them, 5,6,24 and 23 are digital output pins, and 12 and 13 are PWM output pins.   
 
-#### Servo
-#### IMU
-#### lidar sensor
+### Servo
+### IMU
+### lidar sensor
 --TODO-- [Xi Li, Yida Wang]
 
 ## Software Setup
