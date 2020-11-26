@@ -55,7 +55,7 @@ const Dashboard = () => {
           <Grid
             item
             lg={4}
-            md={12}
+            md={6}
             xl={3}
             xs={12}
           >
