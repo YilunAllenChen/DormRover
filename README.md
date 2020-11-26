@@ -24,13 +24,6 @@ The project consists three major parts:
 # Project Setup
 
 ## Hardware Setup
-* [Raspberry Pi 4](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications/)
-* [Raspberry pi Camera Module Board REV 1.3 5MP Webcam](https://www.newegg.com/p/1EF-007B-00003)
-* [SparkFun 9DoF Sensor Stick](https://www.sparkfun.com/products/13944)
-* [SparkFun Motor Driver - Dual TB6612FNG](https://www.sparkfun.com/products/14450)
-* [SparkFun USB Type A Female Breakout](https://www.sparkfun.com/products/12700)
-* [Adafruit VL53L0X Time of Flight Distance Sensor](https://www.adafruit.com/product/3317)
-* [Micro servo](https://www.adafruit.com/product/169)
 
 ![Image of Yaktocat](https://www.raspberrypi-spy.co.uk/wp-content/uploads/2012/06/Raspberry-Pi-GPIO-Header-with-Photo-702x336.png)   
 Figure 1. Raspberry Pi pinout   
@@ -43,7 +36,9 @@ The pin number discussed in the following section will be referred to the pinout
 Figure 2. Dual H-briage   
 ![Image of Yaktocat](https://opencircuit.shop/resources/content/4d31362984068/crop/1900-950/DC-Geared-Motor.webp)   
 Figure 3. Motors used in Motion Control   
-
+#### Connection
+The PWMA pin on the TB6612 in Figure 3 is connected to the raspberry pi 12   
+The PWMB pin on the TB6612 in Figure 3 is connected to the raspberry pi 13   
 
 Motion Control take 6 pins. Among them, 5,6,24 and 23 are digital output pins, and 12 and 13 are PWM output pins.   
 
@@ -55,7 +50,7 @@ Figure 4 Servo appearance
 ![Image of Yaktocat](https://os.mbed.com/media/uploads/4180_1/servocable.png)   
 Figure 5 Servo Wire Connection   
 #### Connection
-
+As shown in Figure 5, the servo has three wires. Black wire is connected to the common ground, and the red wire is connected to the 5v power line. The yellow signal wire is connected to the GPIO 18 of raspberry pi.
 ### IMU
 ### lidar sensor
 --TODO-- [Xi Li, Yida Wang]
