@@ -69,4 +69,4 @@ def vid_gen():
         frame = camera.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-        time.sleep(0.03)
+        time.sleep(0.05)
