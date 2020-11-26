@@ -60,24 +60,26 @@ const Controls = ({ className, ...rest }) => {
             >
               Rover Control
             </Typography>
+            
+              <Grid style={{ 'height': 60 }} />
             <React.Fragment>
               <Grid style={{ padding: 30 }}>
-                <Button onClick={() => send_key('w')}>
+                <Button size='large'  onClick={() => send_key('w')}>
                   <ArrowUpwardIcon />
                 </Button>
               </Grid>
               <Grid style={{ 'margin': 'auto' }}>
-                <Button onClick={() => send_key('a')}>
+                <Button size='large'  onClick={() => send_key('a')}>
                   <ArrowBackIcon />
                 </Button>              
 
 
-                <Button onClick={() => send_key('d')}>
+                <Button size='large'  onClick={() => send_key('d')}>
                   <ArrowForwardIcon />
                 </Button>
               </Grid>
               <Grid style={{ padding: 30 }}>
-                <Button onClick={() => send_key('s')}>
+                <Button size='large'  onClick={() => send_key('s')}>
                   <ArrowDownwardIcon />
                 </Button>
               </Grid>
