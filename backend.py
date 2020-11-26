@@ -77,11 +77,11 @@ def command():
     '''
     key = request.json['key']
     if key == 'w':
-        set_speed(100)
+        set_speed(50)
         go_straight()
         sleep(0.7)
     elif key == 's':
-        set_speed(100)
+        set_speed(50)
         go_backward()
         sleep(0.7)
     elif key == 'a':
