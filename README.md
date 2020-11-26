@@ -36,19 +36,27 @@ The pin number discussed in the following section will be referred to the pinout
 Figure 2. Dual H-briage   
 ![Image of Yaktocat](https://opencircuit.shop/resources/content/4d31362984068/crop/1900-950/DC-Geared-Motor.webp)   
 Figure 3. Motors used in Motion Control   
+![Image of Yaktocat](https://drive.google.com/file/d/15__YrcCUBDH8ULz1Y3UyNw7dsp8LDBDm/view?usp=sharing)   
+Figure 4 Chassis and motor position   
 #### Connection
 The PWMA pin on the TB6612 in Figure 3 is connected to the raspberry pi 12   
 The PWMB pin on the TB6612 in Figure 3 is connected to the raspberry pi 13   
-
+The BI1 pin on the TB6612 in Figure 3 is connected to the raspberry pi 6   
+The BI2 pin on the TB6612 in Figure 3 is connected to the raspberry pi 5  
+The AI1 pin on the TB6612 in Figure 3 is connected to the raspberry pi 24   
+The AI2 pin on the TB6612 in Figure 3 is connected to the raspberry pi 23
+The A01 pin and A02 pin on the TB6612 in Figure 3 are connected to the motor on the left as shown in Figure 4   
+The B01 pin and B02 pin on the TB6612 in Figure 3 are connected to the motor on the right as shown in Figure 4
+The GROUND pin on the TB6612 in Figure 3 is connected to the common ground
 Motion Control take 6 pins. Among them, 5,6,24 and 23 are digital output pins, and 12 and 13 are PWM output pins.   
 
 ### Servo   
 #### Components   
 ![Image of Yaktocat](https://os.mbed.com/media/uploads/4180_1/htservo.jpg)   
-Figure 4 Servo appearance   
+Figure 5 Servo appearance   
 
 ![Image of Yaktocat](https://os.mbed.com/media/uploads/4180_1/servocable.png)   
-Figure 5 Servo Wire Connection   
+Figure 6 Servo Wire Connection   
 #### Connection
 As shown in Figure 5, the servo has three wires. Black wire is connected to the common ground, and the red wire is connected to the 5v power line. The yellow signal wire is connected to the GPIO 18 of raspberry pi.
 ### IMU
