@@ -40,7 +40,15 @@ Figure 3. Motors used in Motion Control
 
 Motion Control take 6 pins. Among them, 5,6,24 and 23 are digital output pins, and 12 and 13 are PWM output pins.   
 
-### Servo
+### Servo   
+#### Components   
+![Image of Yaktocat](https://os.mbed.com/media/uploads/4180_1/htservo.jpg)   
+Figure 4 Servo appearance   
+
+![Image of Yaktocat](https://os.mbed.com/media/uploads/4180_1/servocable.png)   
+Figure 5 Servo Wire Connection   
+#### Connection
+
 ### IMU
 ### lidar sensor
 --TODO-- [Xi Li, Yida Wang]
