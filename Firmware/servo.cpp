@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include "LSM9DS1.h"
 #define servoPWM 18
-float turn = 7;
+float turn = 8;
 int c;
 
 extern "C"
@@ -27,7 +27,7 @@ extern "C"
 
 	void servo_return_to_middle()
 	{
-		turn = 7;
+		turn = 8;
 		gpioPWM(servoPWM, turn);
 		sleep(0.1);
 	}
