@@ -92,6 +92,15 @@ def command():
         set_speed(40)
         turn_right()
         sleep(0.3)
+    elif key == 'servo_left':
+        move_servo('left')
+        sleep(0.5)
+    elif key == 'servo_right':
+        move_servo('right')
+        sleep(0.5)
+    elif key == 'servo_reset':
+        move_servo('reset')
+        sleep(0.5)
     stop()
     return jsonify({
         "payload": "foobar"
