@@ -85,11 +85,11 @@ def command():
         go_backward()
         sleep(0.7)
     elif key == 'a':
-        set_speed(20)
+        set_speed(40)
         turn_left()
         sleep(0.3)
     elif key == 'd':
-        set_speed(20)
+        set_speed(40)
         turn_right()
         sleep(0.3)
     elif key == 'servo_left':
@@ -108,7 +108,7 @@ def command():
     
 
 
-@app.route('/video_feed')
+@app.route('/app/video_feed')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(vid_gen(),
