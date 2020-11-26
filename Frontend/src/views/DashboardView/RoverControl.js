@@ -62,7 +62,7 @@ const Controls = ({ className, ...rest }) => {
             </Typography>
             <React.Fragment>
 
-              <Grid style={{ 'height': 80 }} />
+              <Grid style={{ 'height': 60 }} />
               <Grid style={{ padding: 30 }}>
                 <Button size='large' onClick={() => send_key('w')}>
                   <ArrowUpwardIcon />
