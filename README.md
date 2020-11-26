@@ -24,6 +24,13 @@ The project consists three major parts:
 # Project Setup
 
 ## Hardware Setup
+* [Raspberry Pi 4](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications/)
+* [Raspberry pi Camera Module Board REV 1.3 5MP Webcam](https://www.newegg.com/p/1EF-007B-00003)
+* [SparkFun 9DoF Sensor Stick](https://www.sparkfun.com/products/13944)
+* [SparkFun Motor Driver - Dual TB6612FNG](https://www.sparkfun.com/products/14450)
+* [SparkFun USB Type A Female Breakout](https://www.sparkfun.com/products/12700)
+* [Adafruit VL53L0X Time of Flight Distance Sensor](https://www.adafruit.com/product/3317)
+* [Micro servo](https://www.adafruit.com/product/169)
 
 ![Image of Yaktocat](https://www.raspberrypi-spy.co.uk/wp-content/uploads/2012/06/Raspberry-Pi-GPIO-Header-with-Photo-702x336.png)   
 Figure 1. Raspberry Pi pinout   
