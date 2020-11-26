@@ -56,13 +56,13 @@ class Team extends React.Component {
       },
       {
         name: "Yida Wang",
-        desc: "description", 
+        desc: "I am Han Pi!!!", 
         contact: {
           "LinkedIn": "https://www.linkedin.com/in/yida-wang-10221097/"
         }
       }, {
         name: "Xi Li",
-        desc: "description", 
+        desc: "I am Xi Li, 3rd year electrical engineering Bachelor in Georgia Tech. Academic focus are analog circuits analysis and design, embedded system design, and control system design. Having experience to build and assemble an op amp with 1.7 percent error from designed feedback loop gain.", 
         contact: {
           "LinkedIn": "https://www.linkedin.com/in/xi-li-b98422194/"
         }
