@@ -43,7 +43,7 @@ const Controls = ({ className, ...rest }) => {
     <Card
       className={clsx(classes.root, className)}
       {...rest}
-      style={{'margin':'auto'}}
+      style={{ 'margin': 'auto' }}
     >
       <CardContent>
         <Grid
@@ -51,33 +51,35 @@ const Controls = ({ className, ...rest }) => {
           justify="space-between"
           spacing={3}
         >
-          <Grid style={{'margin':'auto'}} item>
+          <Grid style={{ 'margin': 'auto' }} item>
             <Typography
               color="textSecondary"
               gutterBottom
               variant="h6"
-              style={{'textAlign':'center'}}
+              style={{ 'textAlign': 'center' }}
             >
               Rover Control
             </Typography>
             <React.Fragment>
+
+              <Grid style={{ 'height': 80 }} />
               <Grid style={{ padding: 30 }}>
-                <Button onClick={() => send_key('w')}>
+                <Button size='large' onClick={() => send_key('w')}>
                   <ArrowUpwardIcon />
                 </Button>
               </Grid>
               <Grid style={{ 'margin': 'auto' }}>
-                <Button onClick={() => send_key('a')}>
+                <Button size='large' onClick={() => send_key('a')}>
                   <ArrowBackIcon />
                 </Button>
 
 
-                <Button onClick={() => send_key('d')}>
+                <Button size='large' onClick={() => send_key('d')}>
                   <ArrowForwardIcon />
                 </Button>
               </Grid>
               <Grid style={{ padding: 30 }}>
-                <Button onClick={() => send_key('s')}>
+                <Button size='large' onClick={() => send_key('s')}>
                   <ArrowDownwardIcon />
                 </Button>
               </Grid>
