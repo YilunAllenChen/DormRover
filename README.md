@@ -77,7 +77,7 @@ Figure 7. The SparkFun 9DoF Sensor Stick (IMU).
 |     **GPIO3**   | **SCL**|
 
 ### LIDAR TOF Distance Sensor 
-![Image of Yaktocat](https://boutique.semageek.com/3044-thickbox_default/distance-sensor-adafruit-vl53l0x-30-1000-mm.jpg)
+![Image of Yaktocat](https://i.imgur.com/7Yi9h71.png)
 
 Figure 8. VL53L0X LIDAR TOF senor.
 
