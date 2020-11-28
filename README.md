@@ -67,12 +67,8 @@ As shown in Figure 5, the servo has three wires. Black wire is connected to the 
 <p align="center">
   <img src="https://i.imgur.com/ljnelwV.jpg">  
   <br>Figure 7. The SparkFun 9DoF Sensor Stick (IMU).<br>
-</p>
-<p align="center">
   <img src="https://i.imgur.com/Z7gqZqn.png">  
   <br>Figure 8. Schematic of LSM9DS1.<br>
-</p>
-<p align="center">
   <img src="https://i.imgur.com/8uc6VKo.png">  
   <br>Figure 9. I2C Address Table.<br>
 </p>
