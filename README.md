@@ -68,10 +68,15 @@ As shown in Figure 5, the servo has three wires. Black wire is connected to the 
   <img src="https://i.imgur.com/ljnelwV.jpg">  
   <br>Figure 7. The SparkFun 9DoF Sensor Stick (IMU).<br>
 </p>
-![Image of Yaktocat](https://i.imgur.com/Z7gqZqn.png)  
-Figure 8. Schematic of LSM9DS1.  
-![Image of Yaktocat](https://i.imgur.com/8uc6VKo.png)  
-Figure 9. I2C Address Table.  
+<p align="center">
+  <img src="https://i.imgur.com/Z7gqZqn.png">  
+  <br>Figure 8. Schematic of LSM9DS1.<br>
+</p>
+<p align="center">
+  <img src="https://i.imgur.com/8uc6VKo.png">  
+  <br>Figure 9. I2C Address Table.<br>
+</p>
+ 
 **Pin Connection**  
 | Raspberry Pi 4  |   IMU  | 
 |-----------------|--------|
@@ -83,8 +88,11 @@ Figure 9. I2C Address Table.
 The LSM9DS1 is a 9 degrees-of-freedom Inertial Measurement Unit which contains a 3-axis accelerometer, 3-axis gyroscope, and 3-axis magnetometer as well as a temperature sensor on a single chip. These sensors can be used to determine a very precise orientation and are useful for applications such as small aircraft/drone autopilots and robot position, direction, tilt, and balance.  
 
 ### LIDAR TOF Distance Sensor  
-![Image of Yaktocat](https://i.imgur.com/7Yi9h71.png)  
-Figure 10. VL53L0X LIDAR TOF sensor.  
+<p align="center">
+  <img src="https://i.imgur.com/7Yi9h71.png">  
+  <br>Figure 10. VL53L0X LIDAR TOF sensor.<br>
+</p>
+
 ![Image of Yaktocat](https://i.imgur.com/yVYNxdc.png)  
 Figure 11. Schematic of LIDAR TOF sensor.  
 **Pin Connection**  
