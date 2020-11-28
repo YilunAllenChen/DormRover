@@ -65,10 +65,12 @@ As shown in Figure 5, the servo has three wires. Black wire is connected to the 
 
 ### LSM9DS1 IMU Breakout Board
 ![Image of Yaktocat](https://i.imgur.com/ljnelwV.jpg)
-
 Figure 7. The SparkFun 9DoF Sensor Stick (IMU).
-
-**Table 1**
+![Image of Yaktocat](https://i.imgur.com/Z7gqZqn.png)
+Figure 8. Schematic of LSM9DS1.
+![Image of Yaktocat](https://i.imgur.com/8uc6VKo.png)
+Figure 9. I2C Address Table.
+**Pin Connection**
 | Raspberry Pi 4  |   IMU  | 
 |-----------------|--------|
 |     **3.3V**    | **VDD**| 
@@ -76,12 +78,15 @@ Figure 7. The SparkFun 9DoF Sensor Stick (IMU).
 |     **GPIO2**   | **SDA**|
 |     **GPIO3**   | **SCL**|
 
+The LSM9DS1 is a 9 degrees-of-freedom Inertial Measurement Unit which contains a 3-axis accelerometer, 3-axis gyroscope, and 3-axis magnetometer as well as a temperature sensor on a single chip. These sensors can be used to determine a very precise orientation and are useful for applications such as small aircraft/drone autopilots and robot position, direction, tilt, and balance.
+
 ### LIDAR TOF Distance Sensor 
 ![Image of Yaktocat](https://i.imgur.com/7Yi9h71.png)
+Figure 10. VL53L0X LIDAR TOF sensor.
+![Image of Yaktocat](https://i.imgur.com/yVYNxdc.png)
+Figure 11. Schematic of LIDAR TOF sensor.
 
-Figure 8. VL53L0X LIDAR TOF senor.
-
-**Table 2**
+**Pin Connection**
 | Raspberry Pi 4  |   VL53L0X  | 
 |-----------------|------------|
 |     **3.3V**    |   **VDD**  | 
@@ -89,6 +94,7 @@ Figure 8. VL53L0X LIDAR TOF senor.
 |     **GPIO2**   |   **SDA**  |
 |     **GPIO3**   |   **SCL**  |
 
+Many embedded devices need to measure distance. Distance sensors are used for gesture detection on tablets and phones, and are also found on many robots to detect and avoid obstacles. New ToF (time of flight) sensors measure the speed of light delay from a solid state laser (LIDAR - the term lidar is a portmanteau of "light" and "radar".) to detect distance. It uses a SPAD array (Single Photon Avalanche Diodes) detector and an IR Laser with a 940nm VCSEL emitter (Vertical Cavity Surface-Emitting Laser) controlled by an internal microprocessor all in a module smaller than a pencil eraser. 
 
 ## Software Setup
 1. Ready your Raspberry Pi (3 or above recommended)
