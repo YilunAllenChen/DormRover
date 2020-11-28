@@ -65,7 +65,7 @@ As shown in Figure 5, the servo has three wires. Black wire is connected to the 
 
 ### LSM9DS1 IMU Breakout Board  
 <p align="center">
-  <img width="460" height="300" src="https://i.imgur.com/ljnelwV.jpg">
+  <img src="https://i.imgur.com/ljnelwV.jpg">
 </p>
 Figure 7. The SparkFun 9DoF Sensor Stick (IMU).  
 ![Image of Yaktocat](https://i.imgur.com/Z7gqZqn.png)  
