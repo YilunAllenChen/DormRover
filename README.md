@@ -73,7 +73,6 @@ As shown in Figure 5, the servo has three wires. Black wire is connected to the 
   <br>Figure 9. I2C Address Table.<br>
 </p>
 
-<center>
   **Pin Connection**  
 | Raspberry Pi 4  |   IMU  | 
 |-----------------|--------|
@@ -81,17 +80,6 @@ As shown in Figure 5, the servo has three wires. Black wire is connected to the 
 |     **GND**     | **GND**|
 |     **GPIO2**   | **SDA**|
 |     **GPIO3**   | **SCL**|
- </center>
- 
- <center>
-
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-
-</center>
 
 The LSM9DS1 is a 9 degrees-of-freedom Inertial Measurement Unit which contains a 3-axis accelerometer, 3-axis gyroscope, and 3-axis magnetometer as well as a temperature sensor on a single chip. These sensors can be used to determine a very precise orientation and are useful for applications such as small aircraft/drone autopilots and robot position, direction, tilt, and balance.  
 
@@ -99,10 +87,10 @@ The LSM9DS1 is a 9 degrees-of-freedom Inertial Measurement Unit which contains a
 <p align="center">
   <img src="https://i.imgur.com/7Yi9h71.png">  
   <br>Figure 10. VL53L0X LIDAR TOF sensor.<br>
+  <img src="https://i.imgur.com/yVYNxdc.png">
+  <br>Figure 11. Schematic of LIDAR TOF sensor.<br>
 </p>
 
-![Image of Yaktocat](https://i.imgur.com/yVYNxdc.png)  
-Figure 11. Schematic of LIDAR TOF sensor.  
 **Pin Connection**  
 | Raspberry Pi 4  |   VL53L0X  | 
 |-----------------|------------|
