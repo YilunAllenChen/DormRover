@@ -71,16 +71,15 @@ As shown in Figure 5, the servo has three wires. Black wire is connected to the 
   <br>Figure 8. Schematic of LSM9DS1.<br>
   <img src="https://i.imgur.com/8uc6VKo.png">  
   <br>Figure 9. I2C Address Table.<br>
-</p>
- 
-**Pin Connection**  
+  **Pin Connection**  
 | Raspberry Pi 4  |   IMU  | 
 |-----------------|--------|
 |     **3.3V**    | **VDD**| 
 |     **GND**     | **GND**|
 |     **GPIO2**   | **SDA**|
 |     **GPIO3**   | **SCL**|
-
+</p>
+ 
 The LSM9DS1 is a 9 degrees-of-freedom Inertial Measurement Unit which contains a 3-axis accelerometer, 3-axis gyroscope, and 3-axis magnetometer as well as a temperature sensor on a single chip. These sensors can be used to determine a very precise orientation and are useful for applications such as small aircraft/drone autopilots and robot position, direction, tilt, and balance.  
 
 ### LIDAR TOF Distance Sensor  
