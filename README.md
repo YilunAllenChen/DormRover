@@ -63,14 +63,14 @@ Figure 6 Servo Wire Connection
 #### Connection
 As shown in Figure 5, the servo has three wires. Black wire is connected to the common ground, and the red wire is connected to the 5v power line. The yellow signal wire is connected to the GPIO 18 of raspberry pi.
 
-#### LSM9DS1 IMU Breakout Board
+### LSM9DS1 IMU Breakout Board  
 ![Image of Yaktocat](https://i.imgur.com/ljnelwV.jpg)  
-Figure 7. The SparkFun 9DoF Sensor Stick (IMU).
+Figure 7. The SparkFun 9DoF Sensor Stick (IMU).  
 ![Image of Yaktocat](https://i.imgur.com/Z7gqZqn.png)  
-Figure 8. Schematic of LSM9DS1.
+Figure 8. Schematic of LSM9DS1.  
 ![Image of Yaktocat](https://i.imgur.com/8uc6VKo.png)  
-Figure 9. I2C Address Table.
-**Pin Connection**
+Figure 9. I2C Address Table.  
+**Pin Connection**  
 | Raspberry Pi 4  |   IMU  | 
 |-----------------|--------|
 |     **3.3V**    | **VDD**| 
@@ -78,15 +78,14 @@ Figure 9. I2C Address Table.
 |     **GPIO2**   | **SDA**|
 |     **GPIO3**   | **SCL**|
 
-The LSM9DS1 is a 9 degrees-of-freedom Inertial Measurement Unit which contains a 3-axis accelerometer, 3-axis gyroscope, and 3-axis magnetometer as well as a temperature sensor on a single chip. These sensors can be used to determine a very precise orientation and are useful for applications such as small aircraft/drone autopilots and robot position, direction, tilt, and balance.
+The LSM9DS1 is a 9 degrees-of-freedom Inertial Measurement Unit which contains a 3-axis accelerometer, 3-axis gyroscope, and 3-axis magnetometer as well as a temperature sensor on a single chip. These sensors can be used to determine a very precise orientation and are useful for applications such as small aircraft/drone autopilots and robot position, direction, tilt, and balance.  
 
-#### LIDAR TOF Distance Sensor 
+### LIDAR TOF Distance Sensor  
 ![Image of Yaktocat](https://i.imgur.com/7Yi9h71.png)  
-Figure 10. VL53L0X LIDAR TOF sensor.
+Figure 10. VL53L0X LIDAR TOF sensor.  
 ![Image of Yaktocat](https://i.imgur.com/yVYNxdc.png)  
-Figure 11. Schematic of LIDAR TOF sensor.
-
-**Pin Connection**
+Figure 11. Schematic of LIDAR TOF sensor.  
+**Pin Connection**  
 | Raspberry Pi 4  |   VL53L0X  | 
 |-----------------|------------|
 |     **3.3V**    |   **VDD**  | 
