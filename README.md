@@ -64,7 +64,9 @@ Figure 6 Servo Wire Connection
 As shown in Figure 5, the servo has three wires. Black wire is connected to the common ground, and the red wire is connected to the 5v power line. The yellow signal wire is connected to the GPIO 18 of raspberry pi.
 
 ### LSM9DS1 IMU Breakout Board  
-![Image of Yaktocat](https://i.imgur.com/ljnelwV.jpg)  
+<p align="center">
+  src="https://i.imgur.com/ljnelwV.jpg">
+</p>
 Figure 7. The SparkFun 9DoF Sensor Stick (IMU).  
 ![Image of Yaktocat](https://i.imgur.com/Z7gqZqn.png)  
 Figure 8. Schematic of LSM9DS1.  
